@@ -58,6 +58,7 @@ $(function(){
 		$("#characterAttack").empty();
 		$("#characterDefend").empty();
 		$("#characterFight").empty();
+		$('#fightButton').empty();
 		attackActual = 0;
 		attackHealth = 0;
     	defendHealth = 0;
@@ -81,10 +82,12 @@ $(function(){
 			$("#characterFight").append("<h3>Defender</h3>");
 			$('#characterFight').append(this);
 			defendHealth = $("#characterFight .character").data("stats").healthPoints;
-			var fightBtn = $("<button>");
-	        $(fightBtn).addClass("btn btn-lg btn-danger fight-button");
-	        $(fightBtn).text("Fight!");
-			$("#fightButton").append(fightBtn);		
+			if ($('#fightButton').is(':empty')) {
+				var fightBtn = $("<button>");
+		        $(fightBtn).addClass("btn btn-lg btn-danger fight-button");
+		        $(fightBtn).text("Fight!");
+				$("#fightButton").append(fightBtn);
+			}	
 		}
     });
 
