@@ -129,7 +129,7 @@ $(function(){
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
 		if (attackHealth <= 0) {
-			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose! Feel free to play again!</span></div>');
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose!<br>Better luck next time!</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
@@ -138,7 +138,7 @@ $(function(){
 			$("#fightInfo").empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
-				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You win! Feel free to play again!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You win!<br>You are one with the Force!</span></div>');
 				resetGame();
 			}
 			else {
