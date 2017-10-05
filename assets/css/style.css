@@ -26,6 +26,11 @@ button:focus {
     outline: 0 !important; 
 }
 
+.logo-image {
+	width: 300px;
+	margin-top: 20px;
+}
+
 .character {
 	display: inline-block;
 	margin: 20px 10px 10px 0px;
