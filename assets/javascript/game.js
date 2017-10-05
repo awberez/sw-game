@@ -1,7 +1,7 @@
 $(function(){
 
 	var greedo = {
-        attackPower: 20,
+        attackPower: 25,
         healthPoints: 100,
         counterAttack: 25
     };
