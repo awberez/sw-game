@@ -82,13 +82,13 @@ $(function(){
 			$('#characterFight').append(this);
 			defendHealth = $("#characterFight .character").data("stats").healthPoints;
 			var fightBtn = $("<button>");
-	        $(fightBtn).addClass("fight-button");
+	        $(fightBtn).addClass("btn btn-lg btn-danger fight-button");
 	        $(fightBtn).text("Fight!");
-			$("#characterFight").append(fightBtn);		
+			$("#fightButton").append(fightBtn);		
 		}
     });
 
-    $("#characterFight").on("click", ".fight-button", function() {
+    $("#fightButton").on("click", ".fight-button", function() {
 		var attackData = $("#characterAttack .character").data("stats");
 		var defendData = $("#characterFight .character").data("stats");
 		attackHealth = attackHealth - defendData.counterAttack;
