@@ -59,20 +59,28 @@ $(function(){
 	}
 
 	function resetGame() {
+		$('#gameButton').empty();
+		var resetBtn = $("<button>");
+        	$(resetBtn).addClass("btn btn-lg reset-button");
+        	$(resetBtn).text("PLAY AGAIN?");
+        	$("#gameButton").append(resetBtn);
+	}
+	
+	characterSelect();
+	
+	$("#gameButton").on("click", ".reset-button", function () {
 		$("#characterAttack").empty();
 		$("#attackHeading").empty();
 		$("#characterFight").empty();
 		$("#fightHeading").empty();
 		$("#fightInfo").empty();
-		$('#fightButton').empty();
+		$('#gameButton').empty();
 		attackActual = 0;
 		attackHealth = 0;
     	defendHealth = 0;
     	charactersDefeated = 0;
     	characterSelect();
-	}
-
-	characterSelect();
+	});
 
 	$('body').on('click', '.notChosen', function() {
 		if ($('#characterAttack').is(':empty')) {
@@ -87,14 +95,15 @@ $(function(){
 			$("#characterSelection").empty();
 		}
 		else if ($('#characterFight').is(':empty')) {
+			$("#fightInfo").empty();
 			$('#characterFight').append(this);
 			$('#characterList .overlay-target').removeClass("overlay");
 			defendHealth = $("#characterFight .character").data("stats").healthPoints;
-			if ($('#fightButton').is(':empty')) {
+			if ($('#gameButton').is(':empty')) {
 				var fightBtn = $("<button>");
-		        $(fightBtn).addClass("btn btn-lg btn-danger fight-button");
+		        $(fightBtn).addClass("btn btn-lg fight-button");
 		        $(fightBtn).text("FIGHT!");
-				$("#fightButton").append(fightBtn);
+				$("#gameButton").append(fightBtn);
 			}
 			if (charactersDefeated == 2) {
 				$("#characterDefend").empty();
@@ -102,7 +111,7 @@ $(function(){
 		}
     });
 
-    $("#fightButton").on("click", ".fight-button", function() {
+    $("#gameButton").on("click", ".fight-button", function() {
 		var attackData = $("#characterAttack .character").data("stats");
 		var defendData = $("#characterFight .character").data("stats");
 		attackHealth = attackHealth - defendData.counterAttack;
@@ -120,50 +129,23 @@ $(function(){
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
 		if (attackHealth <= 0) {
-			alert("You lose!");
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose! Feel free to play again!</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
 			$("#characterFight").empty();
-			$('#fightButton').empty();
+			$('#gameButton').empty();
 			$("#fightInfo").empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
-				alert("You win!");
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You win! Feel free to play again!</span></div>');
 				resetGame();
 			}
 			else {
 				$('#characterList .overlay-target').addClass("overlay");
-				alert("Choose a new defender!")
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">Choose a new Defender!</span></div>');
 			}
 		}
     });
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

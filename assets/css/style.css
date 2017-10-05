@@ -134,14 +134,6 @@ button:focus {
 	font-family: 'Anonymous Pro', monospace;
 }
 
-/*#attackHeading, #characterAttack {
-	margin-left: 50%;
-}
-
-#fightHeading, #characterFight {
-	margin-right: 50%;
-}*/
-
 .green {
 	color: #32CD32;
 }
@@ -181,7 +173,7 @@ button:focus {
 	color: #f7df56;
 }
 
-.fight-button {
+.fight-button, .reset-button {
 	margin: 25px 0px 20px 0px;
 	font-family:"STARWARS";
 }
@@ -232,5 +224,49 @@ fieldset[disabled] .fight-button.active {
   background-color: #F7DF56; 
 }
 
-
+.reset-button { 
+  color: #F7DF56; 
+  background-color: #000752; 
+  border-color: #F7DF56; 
+} 
+ 
+.reset-button:hover, 
+.reset-button:focus, 
+.reset-button:active, 
+.reset-button.active, 
+.open .dropdown-toggle.reset-button { 
+  color: #ffffff; 
+  background-color: #1500B8; 
+  border-color: #F7DF56; 
+} 
+ 
+.reset-button:active, 
+.reset-button.active, 
+.open .dropdown-toggle.reset-button { 
+  background-image: none; 
+} 
+ 
+.reset-button.disabled, 
+.reset-button[disabled], 
+fieldset[disabled] .reset-button, 
+.reset-button.disabled:hover, 
+.reset-button[disabled]:hover, 
+fieldset[disabled] .reset-button:hover, 
+.reset-button.disabled:focus, 
+.reset-button[disabled]:focus, 
+fieldset[disabled] .reset-button:focus, 
+.reset-button.disabled:active, 
+.reset-button[disabled]:active, 
+fieldset[disabled] .reset-button:active, 
+.reset-button.disabled.active, 
+.reset-button[disabled].active, 
+fieldset[disabled] .reset-button.active { 
+  background-color: #000752; 
+  border-color: #F7DF56; 
+} 
+ 
+.reset-button .badge { 
+  color: #000752; 
+  background-color: #ffffff; 
+}
 
