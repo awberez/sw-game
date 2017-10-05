@@ -30,27 +30,31 @@ $(function(){
     var charactersDefeated = 0;
 
 	function characterSelect() {
-		$("#characterSelection").append("<h3>Choose Your Character</h3>")
+		$("#characterSelection").append("<h3>CHOOSE YOUR CHARACTER</h3>")
 		$("#listHome").html("<div id='characterList'></div>");
-		$("#characterList").html('<div id="characterGreedo" class="character"><img src="assets/images/greedo copy.jpg" /></div>');
+		//Greedo
+		$("#characterList").html('<div id="characterGreedo" class="character notChosen"><img src="assets/images/greedo copy.jpg" /></div>');
 		$("#characterGreedo").data('stats', greedo);
 		$("#characterGreedo").append("<span class='characterName'>Greedo</span>");
-		$("#characterGreedo").append("<span class='characterHealth'>Health: " + greedo.healthPoints + "</span>");
+		$("#characterGreedo").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + greedo.healthPoints + "</span></span>");
 		$("#characterGreedo").append("<div class='infoDiv'><span class='characterInfo align-middle'>Poor aim, worse luck.</span></div>");
-		$("#characterList").append('<div id="characterIg88" class="character"><img src="assets/images/ig-88 copy.jpg" /></div>');
+		//IG-88
+		$("#characterList").append('<div id="characterIg88" class="character notChosen"><img src="assets/images/ig-88 copy.jpg" /></div>');
 		$("#characterIg88").data('stats', ig88);
 		$("#characterIg88").append("<span class='characterName'>IG-88</span>");
-		$("#characterIg88").append("<span class='characterHealth'>Health: " + ig88.healthPoints + "</span>");
+		$("#characterIg88").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + ig88.healthPoints + "</span></span>");
 		$("#characterIg88").append("<div class='infoDiv'><span class='characterInfo'>Droid extra with a killer backstory.</span></div>");
-		$("#characterList").append('<div id="characterSarlacc" class="character"><img src="assets/images/sarlacc copy.png" /></div>');
+		//Sarlacc
+		$("#characterList").append('<div id="characterSarlacc" class="character notChosen"><img src="assets/images/sarlacc copy.png" /></div>');
 		$("#characterSarlacc").data('stats', sarlacc);
 		$("#characterSarlacc").append("<span class='characterName'>Sarlacc</span>");
-		$("#characterSarlacc").append("<span class='characterHealth'>Health: " + sarlacc.healthPoints + "</span>");
+		$("#characterSarlacc").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + sarlacc.healthPoints + "</span></span>");
 		$("#characterSarlacc").append("<div class='infoDiv'><span class='characterInfo'>Unsung hero of <i>Return of the Jedi</i>.</span></div>");
-		$("#characterList").append('<div id="characterTauntaun" class="character"><img src="assets/images/tauntaun copy.jpg" /></div>');
+		//Tauntaun
+		$("#characterList").append('<div id="characterTauntaun" class="character notChosen"><img src="assets/images/tauntaun copy.jpg" /></div>');
 		$("#characterTauntaun").data('stats', tauntaun);
 		$("#characterTauntaun").append("<span class='characterName'>Tauntaun</span>");
-		$("#characterTauntaun").append("<span class='characterHealth'>Health: " + tauntaun.healthPoints + "</span>");
+		$("#characterTauntaun").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + tauntaun.healthPoints + "</span></span>");
 		$("#characterTauntaun").append("<div class='infoDiv'><span class='characterInfo'>Loyal in battle, warm in winter.</span></div>");
 	}
 
@@ -58,7 +62,6 @@ $(function(){
 		$("#characterAttack").empty();
 		$("#characterDefend").empty();
 		$("#characterFight").empty();
-		$('#fightButton').empty();
 		attackActual = 0;
 		attackHealth = 0;
     	defendHealth = 0;
@@ -68,24 +71,25 @@ $(function(){
 
 	characterSelect();
 
-	$('body').on('click', '.character', function() {
+	$('body').on('click', '.notChosen', function() {
 		if ($('#characterAttack').is(':empty')) {
 			$(".infoDiv").remove();
-			$("#characterAttack").append("<h3>Your Character</h3>");
+			$("#characterAttack").append("<h3>YOUR CHARACTER</h3>");
 			$('#characterAttack').append(this);
+			$("#characterAttack .character").removeClass("notChosen");
 			attackHealth = $("#characterAttack .character").data("stats").healthPoints;
-			$("#characterDefend").append("<h3>Enemies Available to Fight</h3>");
+			$("#characterDefend").append("<h3>ENEMIES AVAILABLE TO FIGHT</h3>");
 			$('#characterDefend').append($("#characterList"));
 			$("#characterSelection").empty();
 		}
 		else if ($('#characterFight').is(':empty')) {
-			$("#characterFight").append("<h3>Defender</h3>");
+			$("#characterFight").append("<h3>DEFENDING ENEMY</h3>");
 			$('#characterFight').append(this);
 			defendHealth = $("#characterFight .character").data("stats").healthPoints;
 			if ($('#fightButton').is(':empty')) {
 				var fightBtn = $("<button>");
 		        $(fightBtn).addClass("btn btn-lg btn-danger fight-button");
-		        $(fightBtn).text("Fight!");
+		        $(fightBtn).text("FIGHT!");
 				$("#fightButton").append(fightBtn);
 			}	
 		}
@@ -95,16 +99,23 @@ $(function(){
 		var attackData = $("#characterAttack .character").data("stats");
 		var defendData = $("#characterFight .character").data("stats");
 		attackHealth = attackHealth - defendData.counterAttack;
-		$("#characterAttack .characterHealth").html("Health: " + attackHealth);
+		$("#characterAttack .healthNumber").html(attackHealth);
+		if (attackHealth / attackData.healthPoints <= 0.5) {
+			$("#characterAttack .healthNumber").removeClass('green').addClass('red');
+		}
 		attackActual = attackActual + attackData.attackPower;
 		defendHealth = defendHealth - attackActual;
-		$("#characterFight .characterHealth").html("Health: " + defendHealth);
+		$("#characterFight .healthNumber").html(defendHealth);
+		if (defendHealth / defendData.healthPoints <= 0.5) {
+			$("#characterFight .healthNumber").removeClass('green').addClass('red');
+		}
 		if (attackHealth <= 0) {
 			alert("You lose!");
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
 			$("#characterFight").empty();
+			$('#fightButton').empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
 				alert("You win!");

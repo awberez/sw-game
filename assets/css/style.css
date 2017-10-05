@@ -1,12 +1,34 @@
 @font-face {font-family:"STARWARS";src:url("../fonts/STARWARS.eot?") format("eot"),url("../fonts/STARWARS.woff") format("woff"),url("../fonts/STARWARS.ttf") format("truetype"),url("../fonts/STARWARS.svg#STARWARS") format("svg");font-weight:normal;font-style:normal;}
 
-h1, h3, .fight-button {
+html {
+	  position: relative;
+	  min-height: 100%;
+}
+
+body {
+	background-image: url(../images/NewHope.jpg);
+	background-size: auto 1200px;
+	background-position: top 0px right 0px;
+	background-repeat: no-repeat;
+}
+
+h1, h3 {
 	font-family:"STARWARS";
+	color: #f7df56;
+	background: black;
+	border: 5px ridge #f7df56;
+	width: 60%;
+	padding: 10px 0px 5px 0px;
+	margin-left: 20%
+}
+
+button:focus { 
+    outline: 0 !important; 
 }
 
 .character {
 	display: inline-block;
-	margin: 10px;
+	margin: 20px 10px 10px 0px;
 	position: relative;
 }
 
@@ -15,14 +37,44 @@ h1, h3, .fight-button {
 	border-radius: 10%;
 }
 
+#listHome .characterName {
+	border-right: 5px ridge gray;
+	border-bottom: 5px ridge gray;
+}
+
+#listHome .characterHealth {
+	border-right: 5px ridge gray;
+	border-top: 5px ridge gray;
+}
+
 #characterAttack img {
+	border: 5px ridge blue;
+	border-radius: 10%;
+}
+
+#characterAttack .characterName {
+	border-right: 5px ridge blue;
+	border-bottom: 5px ridge blue;
+}
+
+#characterAttack .characterHealth {
+	border-right: 5px ridge blue;
+	border-top: 5px ridge blue;
+}
+
+#characterDefend img {
 	border: 5px ridge green;
 	border-radius: 10%;
 }
 
-#characterDefend img {
-	border: 5px ridge yellow;
-	border-radius: 10%;
+#characterDefend .characterName {
+	border-right: 5px ridge green;
+	border-bottom: 5px ridge green;
+}
+
+#characterDefend .characterHealth {
+	border-right: 5px ridge green;
+	border-top: 5px ridge green;
 }
 
 #characterFight img {
@@ -30,23 +82,41 @@ h1, h3, .fight-button {
 	border-radius: 10%;
 }
 
+#characterFight .characterName {
+	border-right: 5px ridge red;
+	border-bottom: 5px ridge red;
+}
+
+#characterFight .characterHealth {
+	border-right: 5px ridge red;
+	border-top: 5px ridge red;
+}
+
 .characterHealth {
 	position:absolute;
 	left: 5px;
-	top: 110px;
-	color: white;
-	background: rgba(0, 0, 0, 0.6);
+	top: 105px;
+	color: #f7df56;
+	background: rgba(0, 0, 0, 0.7);
 	padding: 0px 5px 0px 5px;
 	border-radius: 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
+}
+
+.green {
+	color: #32CD32;
+}
+
+.red {
+	color: red !important;
 }
 
 .characterName {
 	position:absolute;
 	left: 5px;
 	top: 5px;
-	color: white;
-	background: rgba(0, 0, 0, 0.6);
+	color: #f7df56;
+	background: rgba(0, 0, 0, 0.7);
 	padding: 0px 5px 0px 5px;
 	border-radius: 8px 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
@@ -59,22 +129,69 @@ h1, h3, .fight-button {
 	top: 140px;
 	padding: 0px 5px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
-	border: 1px dashed black;
+	border: 1px solid gold;
 	padding: 5px;
 	margin: 5px 10px 0px 10px;
+	background-color: black;
 }
 
 .characterInfo {
 	vertical-align: middle;
 	display: inline-block;
 	line-height: 15px;
+	color: #f7df56;
 }
 
 .fight-button {
-	margin: 20px;
+	margin: 20px 7.5px 20px 0px;
+	font-family:"STARWARS";
 }
 
-
+.fight-button { 
+  color: #F7DF56; 
+  background-color: #520000; 
+  border-color: #F7DF56; 
+} 
+ 
+.fight-button:hover, 
+.fight-button:focus, 
+.fight-button:active, 
+.fight-button.active, 
+.open .dropdown-toggle.fight-button { 
+  color: #F7DF56; 
+  background-color: #B80000; 
+  border-color: #F7DF56; 
+} 
+ 
+.fight-button:active, 
+.fight-button.active, 
+.open .dropdown-toggle.fight-button { 
+  background-image: none; 
+} 
+ 
+.fight-button.disabled, 
+.fight-button[disabled], 
+fieldset[disabled] .fight-button, 
+.fight-button.disabled:hover, 
+.fight-button[disabled]:hover, 
+fieldset[disabled] .fight-button:hover, 
+.fight-button.disabled:focus, 
+.fight-button[disabled]:focus, 
+fieldset[disabled] .fight-button:focus, 
+.fight-button.disabled:active, 
+.fight-button[disabled]:active, 
+fieldset[disabled] .fight-button:active, 
+.fight-button.disabled.active, 
+.fight-button[disabled].active, 
+fieldset[disabled] .fight-button.active { 
+  background-color: #520000; 
+  border-color: #F7DF56; 
+} 
+ 
+.fight-button .badge { 
+  color: #520000; 
+  background-color: #F7DF56; 
+}
 
 
 
