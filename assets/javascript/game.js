@@ -62,6 +62,7 @@ $(function(){
 		$("#characterAttack").empty();
 		$("#characterDefend").empty();
 		$("#characterFight").empty();
+		$('#fightButton').empty();
 		attackActual = 0;
 		attackHealth = 0;
     	defendHealth = 0;
