@@ -60,9 +60,7 @@ h1, h3 {
 	padding: 0px 5px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
 	border: 1px dashed black;
-	padding: 5px 5px 5px 10px;
-	text-align: left;
-
+	padding: 5px 10px 5px 10px;
 }
 
 .characterInfo {
