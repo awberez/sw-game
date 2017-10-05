@@ -12,14 +12,13 @@ body {
 	background-repeat: no-repeat;
 }
 
-h1, h3 {
+h3 {
 	font-family:"STARWARS";
+	display: inline-block;
 	color: #f7df56;
 	background: black;
 	border: 5px ridge #f7df56;
-	width: 60%;
-	padding: 10px 0px 5px 0px;
-	margin-left: 20%
+	padding: 10px 20px 5px 20px;
 }
 
 button:focus { 
@@ -135,6 +134,14 @@ button:focus {
 	font-family: 'Anonymous Pro', monospace;
 }
 
+/*#attackHeading, #characterAttack {
+	margin-left: 50%;
+}
+
+#fightHeading, #characterFight {
+	margin-right: 50%;
+}*/
+
 .green {
 	color: #32CD32;
 }
@@ -175,7 +182,7 @@ button:focus {
 }
 
 .fight-button {
-	margin: 20px 7.5px 20px 0px;
+	margin: 25px 0px 20px 0px;
 	font-family:"STARWARS";
 }
 

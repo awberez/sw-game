@@ -60,7 +60,10 @@ $(function(){
 
 	function resetGame() {
 		$("#characterAttack").empty();
+		$("#attackHeading").empty();
 		$("#characterFight").empty();
+		$("#fightHeading").empty();
+		$("#fightInfo").empty();
 		$('#fightButton').empty();
 		attackActual = 0;
 		attackHealth = 0;
@@ -74,16 +77,16 @@ $(function(){
 	$('body').on('click', '.notChosen', function() {
 		if ($('#characterAttack').is(':empty')) {
 			$(".infoDiv").remove();
-			$("#characterAttack").append("<h3>YOUR CHARACTER</h3>");
+			$("#attackHeading").append("<h3>YOUR CHARACTER</h3>");
+			$("#fightHeading").append("<h3>DEFENDING ENEMY</h3>");
 			$('#characterAttack').append(this);
 			$("#characterAttack .character").removeClass("notChosen");
 			attackHealth = $("#characterAttack .character").data("stats").healthPoints;
-			$("#characterDefend").append("<h3>ENEMIES AVAILABLE TO FIGHT</h3>");
+			$("#characterDefend").append("<h3>ENEMIES LEFT TO FIGHT</h3>");
 			$('#characterDefend').append($("#characterList"));
 			$("#characterSelection").empty();
 		}
 		else if ($('#characterFight').is(':empty')) {
-			$("#characterFight").append("<h3>DEFENDING ENEMY</h3>");
 			$('#characterFight').append(this);
 			$('#characterList .overlay-target').removeClass("overlay");
 			defendHealth = $("#characterFight .character").data("stats").healthPoints;
@@ -112,7 +115,7 @@ $(function(){
 		defendHealth = defendHealth - attackActual;
 		$("#characterFight .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#characterFight .healthNumber").html(defendHealth);
-
+		$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
 		if (defendHealth / defendData.healthPoints <= 0.5) {
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
@@ -123,6 +126,7 @@ $(function(){
 		else if (defendHealth <= 0) {
 			$("#characterFight").empty();
 			$('#fightButton').empty();
+			$("#fightInfo").empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
 				alert("You win!");
