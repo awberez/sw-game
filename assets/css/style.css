@@ -1,0 +1,45 @@
+.character {
+	display: inline-block;
+	margin: 10px;
+	position: relative;
+}
+
+#listHome img {
+	border: 3px solid black;
+	border-radius: 10%;
+}
+
+#characterAttack img {
+	border: 3px solid green;
+	border-radius: 10%;
+}
+
+#characterDefend img {
+	border: 3px solid yellow;
+	border-radius: 10%;
+}
+
+#characterFight img {
+	border: 3px solid red;
+	border-radius: 10%;
+}
+
+.characterHealth {
+	position:absolute;
+	left: 3px;
+	top: 108px;
+	color: white;
+	background: rgba(0, 0, 0, 0.6);
+	padding: 0px 5px 0px 5px;
+	border-radius: 0px 10px;
+}
+
+.characterName {
+	position:absolute;
+	left: 3px;
+	top: 3px;
+	color: white;
+	background: rgba(0, 0, 0, 0.6);
+	padding: 0px 5px 0px 5px;
+	border-radius: 10px 0px 10px;
+}
