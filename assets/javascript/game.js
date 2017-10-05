@@ -36,19 +36,22 @@ $(function(){
 		$("#characterGreedo").data('stats', greedo);
 		$("#characterGreedo").append("<span class='characterName'>Greedo</span>");
 		$("#characterGreedo").append("<span class='characterHealth'>Health: " + greedo.healthPoints + "</span>");
+		$("#characterGreedo").append("<div class='infoDiv'><span class='characterInfo align-middle'>Poor aim, worse luck.</span></div>");
 		$("#characterList").append('<div id="characterIg88" class="character"><img src="assets/images/ig-88 copy.jpg" /></div>');
 		$("#characterIg88").data('stats', ig88);
 		$("#characterIg88").append("<span class='characterName'>IG-88</span>");
 		$("#characterIg88").append("<span class='characterHealth'>Health: " + ig88.healthPoints + "</span>");
+		$("#characterIg88").append("<div class='infoDiv'><span class='characterInfo'>Droid extra with a killer backstory.</span></div>");
 		$("#characterList").append('<div id="characterSarlacc" class="character"><img src="assets/images/sarlacc copy.png" /></div>');
 		$("#characterSarlacc").data('stats', sarlacc);
 		$("#characterSarlacc").append("<span class='characterName'>Sarlacc</span>");
 		$("#characterSarlacc").append("<span class='characterHealth'>Health: " + sarlacc.healthPoints + "</span>");
+		$("#characterSarlacc").append("<div class='infoDiv'><span class='characterInfo'>Unsung hero of <i>Return of the Jedi</i>.</span></div>");
 		$("#characterList").append('<div id="characterTauntaun" class="character"><img src="assets/images/tauntaun copy.jpg" /></div>');
 		$("#characterTauntaun").data('stats', tauntaun);
-		$("#characterTauntaun").append("<span class='characterName'>Luke's Tauntaun</span>");
+		$("#characterTauntaun").append("<span class='characterName'>Tauntaun</span>");
 		$("#characterTauntaun").append("<span class='characterHealth'>Health: " + tauntaun.healthPoints + "</span>");
-
+		$("#characterTauntaun").append("<div class='infoDiv'><span class='characterInfo'>Loyal in battle, warm in winter.</span></div>");
 	}
 
 	function resetGame() {
@@ -66,6 +69,7 @@ $(function(){
 
 	$('body').on('click', '.character', function() {
 		if ($('#characterAttack').is(':empty')) {
+			$(".infoDiv").remove();
 			$("#characterAttack").append("<h3>Your Character</h3>");
 			$('#characterAttack').append(this);
 			attackHealth = $("#characterAttack .character").data("stats").healthPoints;

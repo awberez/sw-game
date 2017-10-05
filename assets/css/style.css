@@ -1,3 +1,9 @@
+@font-face {font-family:"STARWARS";src:url("../fonts/STARWARS.eot?") format("eot"),url("../fonts/STARWARS.woff") format("woff"),url("../fonts/STARWARS.ttf") format("truetype"),url("../fonts/STARWARS.svg#STARWARS") format("svg");font-weight:normal;font-style:normal;}
+
+h1, h3 {
+	font-family:"STARWARS";
+}
+
 .character {
 	display: inline-block;
 	margin: 10px;
@@ -5,41 +11,67 @@
 }
 
 #listHome img {
-	border: 3px solid black;
+	border: 5px ridge gray;
 	border-radius: 10%;
 }
 
 #characterAttack img {
-	border: 3px solid green;
+	border: 5px ridge green;
 	border-radius: 10%;
 }
 
 #characterDefend img {
-	border: 3px solid yellow;
+	border: 5px ridge yellow;
 	border-radius: 10%;
 }
 
 #characterFight img {
-	border: 3px solid red;
+	border: 5px ridge red;
 	border-radius: 10%;
 }
 
 .characterHealth {
 	position:absolute;
-	left: 3px;
-	top: 108px;
+	left: 5px;
+	top: 110px;
 	color: white;
 	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
-	border-radius: 0px 10px;
+	border-radius: 0px 8px;
+	font-family: 'Anonymous Pro', monospace;
 }
 
 .characterName {
 	position:absolute;
-	left: 3px;
-	top: 3px;
+	left: 5px;
+	top: 5px;
 	color: white;
 	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
-	border-radius: 10px 0px 10px;
+	border-radius: 8px 0px 8px;
+	font-family: 'Anonymous Pro', monospace;
 }
+
+.infoDiv {
+	position:absolute;
+	line-height: 45px;
+	left: 0;
+	top: 140px;
+	padding: 0px 5px 0px 5px;
+	font-family: 'Anonymous Pro', monospace;
+	border: 1px dashed black;
+	padding: 5px 5px 5px 10px;
+	text-align: left;
+
+}
+
+.characterInfo {
+	vertical-align: middle;
+	display: inline-block;
+	line-height: 15px;
+}
+
+
+
+
+
