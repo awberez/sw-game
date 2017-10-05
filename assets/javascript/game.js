@@ -1,61 +1,61 @@
 $(function(){
 
 	var greedo = {
+		name: "Greedo",
+		id: "characterGreedo",
+		img: "assets/images/greedo.jpg",
+		info: "Poor aim, worse luck.",
         attackPower: 25,
         healthPoints: 100,
         counterAttack: 25
     };
 
     var ig88 = {
+    	name: "IG-88",
+    	id: "characterIg88",
+    	img: "assets/images/ig-88.jpg",
+    	info: "Droid extra with a killer backstory.",
         attackPower: 15,
         healthPoints: 130,
         counterAttack: 20
     };
 
     var sarlacc = {
+    	name: "Sarlacc",
+    	id: "characterSarlacc",
+    	img: "assets/images/sarlacc.png",
+    	info: "Unsung hero of <i>Return of the Jedi</i>.",
         attackPower: 5,
         healthPoints: 310,
         counterAttack: 10
     };
 
     var tauntaun = {
+    	name: "Tauntaun",
+    	id: "characterTauntaun",
+    	img: "assets/images/tauntaun.jpg",
+    	info: "Loyal in battle, warm in winter.",
         attackPower: 10,
         healthPoints: 150,
         counterAttack: 15
     };
 
+	var charArr = [greedo, ig88, sarlacc, tauntaun];
     var attackActual = 0;
     var attackHealth = 0;
     var defendHealth = 0;
-    var charactersDefeated = 0;
-
+    var charactersDefeated = 0;    
+   
 	function characterSelect() {
 		$("#characterSelection").append("<h3>CHOOSE YOUR CHARACTER</h3>")
 		$("#listHome").html("<div id='characterList'></div>");
-		//Greedo
-		$("#characterList").html('<div id="characterGreedo" class="character notChosen"><img src="assets/images/greedo copy.jpg" /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
-		$("#characterGreedo").data('stats', greedo);
-		$("#characterGreedo").append("<span class='characterName'>Greedo</span>");
-		$("#characterGreedo").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + greedo.healthPoints + "</span></span>");
-		$("#characterGreedo").append("<div class='infoDiv'><span class='characterInfo align-middle'>Poor aim, worse luck.</span></div>");
-		//IG-88
-		$("#characterList").append('<div id="characterIg88" class="character notChosen"><img src="assets/images/ig-88 copy.jpg" /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
-		$("#characterIg88").data('stats', ig88);
-		$("#characterIg88").append("<span class='characterName'>IG-88</span>");
-		$("#characterIg88").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + ig88.healthPoints + "</span></span>");
-		$("#characterIg88").append("<div class='infoDiv'><span class='characterInfo'>Droid extra with a killer backstory.</span></div>");
-		//Sarlacc
-		$("#characterList").append('<div id="characterSarlacc" class="character notChosen"><img src="assets/images/sarlacc copy.png" /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
-		$("#characterSarlacc").data('stats', sarlacc);
-		$("#characterSarlacc").append("<span class='characterName'>Sarlacc</span>");
-		$("#characterSarlacc").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + sarlacc.healthPoints + "</span></span>");
-		$("#characterSarlacc").append("<div class='infoDiv'><span class='characterInfo'>Unsung hero of <i>Return of the Jedi</i>.</span></div>");
-		//Tauntaun
-		$("#characterList").append('<div id="characterTauntaun" class="character notChosen"><img src="assets/images/tauntaun copy.jpg" /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
-		$("#characterTauntaun").data('stats', tauntaun);
-		$("#characterTauntaun").append("<span class='characterName'>Tauntaun</span>");
-		$("#characterTauntaun").append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + tauntaun.healthPoints + "</span></span>");
-		$("#characterTauntaun").append("<div class='infoDiv'><span class='characterInfo'>Loyal in battle, warm in winter.</span></div>");
+		for (i=0; i<charArr.length; i++) {
+			$("#characterList").append('<div id=' + charArr[i].id + ' class="character notChosen"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
+			$("#" + charArr[i].id).data('stats', charArr[i]);
+			$("#" + charArr[i].id).append("<span class='characterName'>" + charArr[i].name +"</span>");
+			$("#" + charArr[i].id).append("<span class='characterHealth'>Health:<span class='healthNumber green'>" + charArr[i].healthPoints + "</span></span>");
+			$("#" + charArr[i].id).append("<div class='infoDiv'><span class='characterInfo align-middle'>" + charArr[i].info + "</span></div>");
+		}
 	}
 
 	function resetGame() {
@@ -103,16 +103,14 @@ $(function(){
 		var attackData = $("#characterAttack .character").data("stats");
 		var defendData = $("#characterFight .character").data("stats");
 		attackHealth = attackHealth - defendData.counterAttack;
-		$("#characterAttack .damage-effect").fadeIn("fast");
-		$("#characterAttack .damage-effect").fadeOut("fast");
+		$("#characterAttack .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#characterAttack .healthNumber").html(attackHealth);
 		if (attackHealth / attackData.healthPoints <= 0.5) {
 			$("#characterAttack .healthNumber").removeClass('green').addClass('red');
 		}
 		attackActual = attackActual + attackData.attackPower;
 		defendHealth = defendHealth - attackActual;
-		$("#characterFight .damage-effect").fadeIn("fast");
-		$("#characterFight .damage-effect").fadeOut("fast");
+		$("#characterFight .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#characterFight .healthNumber").html(defendHealth);
 
 		if (defendHealth / defendData.healthPoints <= 0.5) {
