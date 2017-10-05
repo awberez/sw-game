@@ -33,18 +33,18 @@ button:focus {
 }
 
 #listHome img {
-	border: 5px ridge gray;
+	border: 5px ridge white;
 	border-radius: 10%;
 }
 
 #listHome .characterName {
-	border-right: 5px ridge gray;
-	border-bottom: 5px ridge gray;
+	border-right: 5px ridge white;
+	border-bottom: 5px ridge white;
 }
 
 #listHome .characterHealth {
-	border-right: 5px ridge gray;
-	border-top: 5px ridge gray;
+	border-right: 5px ridge white;
+	border-top: 5px ridge white;
 }
 
 #characterAttack img {
@@ -97,7 +97,7 @@ button:focus {
 	left: 5px;
 	top: 105px;
 	color: #f7df56;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
 	border-radius: 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
@@ -116,7 +116,7 @@ button:focus {
 	left: 5px;
 	top: 5px;
 	color: #f7df56;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
 	border-radius: 8px 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
