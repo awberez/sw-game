@@ -32,6 +32,33 @@ button:focus {
 	position: relative;
 }
 
+.overlay {
+	position: absolute;
+ 	top: 5px;
+	left: 5px;
+	height: 125px;
+	width: 125px;
+	border-radius: 10%;
+	opacity: 0;
+	transition: .5s ease;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.damage-effect {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	height: 125px;
+	width: 125px;
+	border-radius: 10%;
+	display: none;
+ 	background: rgba(255, 0, 0, 0.5);
+}
+
+#characterList .character:hover .overlay {
+    opacity: 1;
+}
+
 #listHome img {
 	border: 5px ridge white;
 	border-radius: 10%;
