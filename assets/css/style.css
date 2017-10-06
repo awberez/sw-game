@@ -311,10 +311,6 @@ fieldset[disabled] .reset-button.active {
 		display: none;
 	}
 
-	#characterList .character:hover .overlay {
-		display: inline;
-	}
-
 }
 
 
