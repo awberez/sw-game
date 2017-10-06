@@ -15,9 +15,9 @@ body {
 h3 {
 	font-family:"STARWARS";
 	display: inline-block;
-	color: #f7df56;
+	color: #f2d224;
 	background: black;
-	border: 5px ridge #f7df56;
+	border: 5px ridge #f2d224;
 	padding: 10px 20px 5px 20px;
 }
 
@@ -133,7 +133,7 @@ button:focus {
 	position:absolute;
 	left: 5px;
 	top: 105px;
-	color: #f7df56;
+	color: #f2d224;
 	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
 	border-radius: 0px 8px;
@@ -152,7 +152,7 @@ button:focus {
 	position:absolute;
 	left: 5px;
 	top: 5px;
-	color: #f7df56;
+	color: #f2d224;
 	background: rgba(0, 0, 0, 0.6);
 	padding: 0px 5px 0px 5px;
 	border-radius: 8px 0px 8px;
@@ -166,7 +166,7 @@ button:focus {
 	top: 140px;
 	padding: 0px 5px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
-	border: 1px solid gold;
+	border: 1px solid #f2d224;
 	padding: 5px;
 	margin: 5px 10px 0px 10px;
 	background-color: black;
@@ -176,7 +176,7 @@ button:focus {
 	vertical-align: middle;
 	display: inline-block;
 	line-height: 15px;
-	color: #f7df56;
+	color: #f2d224;
 }
 
 .fight-button, .reset-button {
@@ -186,9 +186,9 @@ button:focus {
 }
 
 .fight-button { 
-  color: #F7DF56; 
+  color: #f2d224; 
   background-color: #520000; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .fight-button:hover, 
@@ -196,9 +196,9 @@ button:focus {
 .fight-button:active, 
 .fight-button.active, 
 .open .dropdown-toggle.fight-button { 
-  color: #F7DF56; 
+  color: #f2d224; 
   background-color: #B80000; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .fight-button:active, 
@@ -223,18 +223,18 @@ fieldset[disabled] .fight-button:active,
 .fight-button[disabled].active, 
 fieldset[disabled] .fight-button.active { 
   background-color: #520000; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .fight-button .badge { 
   color: #520000; 
-  background-color: #F7DF56; 
+  background-color: #f2d224; 
 }
 
 .reset-button { 
-  color: #F7DF56; 
+  color: #f2d224; 
   background-color: #000752; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .reset-button:hover, 
@@ -244,7 +244,7 @@ fieldset[disabled] .fight-button.active {
 .open .dropdown-toggle.reset-button { 
   color: #ffffff; 
   background-color: #1500B8; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .reset-button:active, 
@@ -269,7 +269,7 @@ fieldset[disabled] .reset-button:active,
 .reset-button[disabled].active, 
 fieldset[disabled] .reset-button.active { 
   background-color: #000752; 
-  border-color: #F7DF56; 
+  border-color: #f2d224; 
 } 
  
 .reset-button .badge { 
