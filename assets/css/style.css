@@ -85,18 +85,18 @@ button:focus {
 }
 
 #characterAttack img {
-	border: 5px ridge blue;
+	border: 5px ridge #0002c6;
 	border-radius: 10%;
 }
 
 #characterAttack .characterName {
-	border-right: 5px ridge blue;
-	border-bottom: 5px ridge blue;
+	border-right: 5px ridge #0002c6;
+	border-bottom: 5px ridge #0002c6;
 }
 
 #characterAttack .characterHealth {
-	border-right: 5px ridge blue;
-	border-top: 5px ridge blue;
+	border-right: 5px ridge #0002c6;
+	border-top: 5px ridge #0002c6;
 }
 
 #characterDefend img {
@@ -115,18 +115,18 @@ button:focus {
 }
 
 #characterFight img {
-	border: 5px ridge red;
+	border: 5px ridge #c60000;
 	border-radius: 10%;
 }
 
 #characterFight .characterName {
-	border-right: 5px ridge red;
-	border-bottom: 5px ridge red;
+	border-right: 5px ridge #c60000;
+	border-bottom: 5px ridge #c60000;
 }
 
 #characterFight .characterHealth {
-	border-right: 5px ridge red;
-	border-top: 5px ridge red;
+	border-right: 5px ridge #c60000;
+	border-top: 5px ridge #c60000;
 }
 
 .characterHealth {
@@ -134,7 +134,7 @@ button:focus {
 	left: 5px;
 	top: 105px;
 	color: #f2d224;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.75);
 	padding: 0px 5px 0px 5px;
 	border-radius: 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
@@ -153,7 +153,7 @@ button:focus {
 	left: 5px;
 	top: 5px;
 	color: #f2d224;
-	background: rgba(0, 0, 0, 0.6);
+	background: rgba(0, 0, 0, 0.75);
 	padding: 0px 5px 0px 5px;
 	border-radius: 8px 0px 8px;
 	font-family: 'Anonymous Pro', monospace;
