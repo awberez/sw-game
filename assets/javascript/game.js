@@ -62,7 +62,7 @@ $(function(){
 		$('#gameButton').empty();
 		var resetBtn = $("<button>");
         	$(resetBtn).addClass("btn btn-lg reset-button");
-        	$(resetBtn).text("PLAY AGAIN?");
+        	$(resetBtn).html("PLAY<bR>AGAIN?");
         	$("#gameButton").append(resetBtn);
 	}
 	
