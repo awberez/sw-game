@@ -25,6 +25,12 @@ button:focus {
     outline: 0 !important; 
 }
 
+.fadeBackground {
+	position: relative;
+	background-color:rgba(0, 0, 0, 0.7);
+	height: 100vh;
+}
+
 .logo-image {
 	width: 250px;
 	margin-top: 20px;
