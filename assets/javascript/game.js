@@ -25,7 +25,7 @@ $(function(){
     	id: "characterSarlacc",
     	img: "assets/images/sarlacc.png",
     	info: "Unsung hero of <i>Return of the Jedi</i>.",
-        attackPower: 5,
+        attackPower: 3,
         healthPoints: 310,
         counterAttack: 10
     };
