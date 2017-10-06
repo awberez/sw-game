@@ -40,7 +40,17 @@ $(function(){
         counterAttack: 15
     };
 
-	var charArr = [greedo, ig88, sarlacc, tauntaun];
+    var droopy = {
+    	name: "Droopy McCool",
+    	id: "characterDroopy",
+    	img: "assets/images/droopy.jpg",
+    	info: "Best stage name in the galaxy.",
+        attackPower: 10,
+        healthPoints: 150,
+        counterAttack: 15
+    };
+
+	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy];
     var attackActual = 0;
     var attackData;
     var attackHealth;
@@ -49,7 +59,7 @@ $(function(){
     var charToDefeat = 3;    
    
 	function characterSelect() {
-		$("#charSelect").append("<h3>CHOOSE YOUR CHARACTER</h3>")
+		$("#charSelect").append("<h4>CHOOSE YOUR CHARACTER</h4>")
 		$("#listHome").html("<div id='charList'></div>");
 		for (i=0; i<charArr.length; i++) {
 			$("#charList").append('<div id=' + charArr[i].id + ' class="character notChosen"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
@@ -85,20 +95,22 @@ $(function(){
 
 	$('body').on('click', '.notChosen', function() {
 		if ($('#charAttack').is(':empty')) {
+			location.href = "#";
 			$(".infoDiv").remove();
-			$("#attackHeading").append("<h3>YOUR CHARACTER</h3>");
-			$("#fightHeading").append("<h3>DEFENDING ENEMY</h3>");
+			$("#attackHeading").append("<h4>YOUR CHARACTER</h4>");
+			$("#fightHeading").append("<h4>DEFENDING ENEMY</h4>");
 			$('#charAttack').append(this);
 			$("#charAttack .character").removeClass("notChosen");
 			attackData = $("#charAttack .character").data("stats");
 			attackHealth = attackData.healthPoints;
-			$("#charDefend").append("<h3>ENEMIES LEFT TO FIGHT</h3>");
+			$("#charDefend").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
 			$('#charDefend').append($("#charList"));
 			$("#charSelect").empty();
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 
 		}
 		else if ($('#charFight').is(':empty')) {
+			location.href = "#";
 			$("#fightInfo").empty();
 			$('#charFight').append(this);
 			$('#charList .overlay-target').removeClass("overlay");
@@ -145,7 +157,7 @@ $(function(){
 			}
 			else {
 				$('#charList .overlay-target').addClass("overlay");
-				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight! (' + charToDefeat + ' remaining)</span></div>');
 			}
 		}
     });

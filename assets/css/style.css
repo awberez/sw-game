@@ -13,11 +13,18 @@ body {
 }
 
 h3 {
+	border: 5px ridge #f2d224;
+}
+
+h4 {
+	border: 2px solid #f2d224;
+}
+
+h3, h4 {
 	font-family:"STARWARS";
 	display: inline-block;
 	color: #f2d224;
 	background: black;
-	border: 5px ridge #f2d224;
 	padding: 10px 20px 5px 20px;
 	max-width: 100%;
 }
@@ -99,6 +106,10 @@ button:focus {
 #charAttack .charHealth {
 	border-right: 5px ridge #0002c6;
 	border-top: 5px ridge #0002c6;
+}
+
+#charDefend {
+	margin-top: 20px;
 }
 
 #charDefend img {
@@ -183,7 +194,7 @@ button:focus {
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 100%;
-	top: 120px;
+	top: 85px;
 }
 
 .charInfo {
@@ -194,7 +205,7 @@ button:focus {
 }
 
 .fight-button, .reset-button {
-	margin: 25px auto 20px auto;
+	margin: 11px auto 20px auto;
 	padding-bottom: 5px;
 	font-family:"STARWARS";
 }
@@ -300,7 +311,7 @@ fieldset[disabled] .reset-button.active {
 		margin-left: auto;
 		margin-right: auto;
 		max-width: 100%;
-		top: 0px;
+		top: 5px;
 	}
 
 	.container {
@@ -316,12 +327,34 @@ fieldset[disabled] .reset-button.active {
 
 @media screen and (max-width: 767px) {
 
-	h3 {
+	h3, h4 {
 		padding: 10px 0px 5px 0px;
 		width: 100%;
+		margin-bottom: 5px;
+	}
+
+	h3 {
+		font-size: 20px;
+	}
+
+	h4 {
 		font-size: 18px;
 	}
 
+	.logo-image {
+		width: 150px;
+		margin-top: 10px;
+	}
+
+	.fight-button, .reset-button {
+		margin: 5px auto 10px auto;
+		padding-bottom: 5px;
+		font-family:"STARWARS";
+	}
+
+	.character {
+		margin: 10px 5px 10px 5px;
+	}
 }
 
 
