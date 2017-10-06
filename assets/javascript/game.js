@@ -45,9 +45,9 @@ $(function(){
     	id: "characterDroopy",
     	img: "assets/images/droopy.jpg",
     	info: "Best stage name in the galaxy.",
-        attackPower: 10,
-        healthPoints: 150,
-        counterAttack: 15
+        attackPower: 7,
+        healthPoints: 200,
+        counterAttack: 12
     };
 
 	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy];
@@ -132,16 +132,22 @@ $(function(){
 		attackHealth = attackHealth - defendData.counterAttack;
 		$("#charAttack .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#charAttack .healthNumber").html(attackHealth);
-		if (attackHealth / attackData.healthPoints <= 0.5) {
-			$("#charAttack .healthNumber").removeClass('green').addClass('red');
+		if (attackHealth / attackData.healthPoints <= 0.33) {
+			$("#charAttack .healthNumber").removeClass('orange').addClass('red');
+		}
+		else if (attackHealth / attackData.healthPoints <= 0.5) {
+			$("#charAttack .healthNumber").removeClass('green').addClass('orange');
 		}
 		attackActual = attackActual + attackData.attackPower;
 		defendHealth = defendHealth - attackActual;
 		$("#charFight .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#charFight .healthNumber").html(defendHealth);
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
-		if (defendHealth / defendData.healthPoints <= 0.5) {
-			$("#charFight .healthNumber").removeClass('green').addClass('red');
+		if (defendHealth / defendData.healthPoints <= 0.33) {
+			$("#charFight .healthNumber").removeClass('orange').addClass('red');
+		}
+		else if (defendHealth / defendData.healthPoints <= 0.66) {
+			$("#charFight .healthNumber").removeClass('green').addClass('orange');
 		}
 		if (attackHealth <= 0) {
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + defendData.name + ' has defeated ' + attackData.name + '!<br><br>YOU LOSE!</span></div>');

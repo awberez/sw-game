@@ -157,6 +157,10 @@ button:focus {
 	color: #32CD32;
 }
 
+.orange {
+	color: #ff9d00;
+}
+
 .red {
 	color: red !important;
 }
