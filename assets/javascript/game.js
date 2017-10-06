@@ -131,7 +131,7 @@ $(function(){
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
 		if (attackHealth <= 0) {
-			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose!<br>Your failure has been noted.</span></div>');
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">YOU LOSE!<br><br>Your failure has been noted.</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
@@ -140,12 +140,12 @@ $(function(){
 			$("#fightInfo").empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
-				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You win!<br>You are one with the Force!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">YOU WIN!<br><br>You are one with the Force!</span></div>');
 				resetGame();
 			}
 			else {
 				$('#characterList .overlay-target').addClass("overlay");
-				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + attackData.name + ' has defeated ' + defendData.name + '! Choose a new enemy to fight!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight!</span></div>');
 			}
 		}
     });
