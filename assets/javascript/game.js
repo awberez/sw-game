@@ -93,6 +93,8 @@ $(function(){
 			$("#characterDefend").append("<h3>ENEMIES LEFT TO FIGHT</h3>");
 			$('#characterDefend').append($("#characterList"));
 			$("#characterSelection").empty();
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">Choose an enemy to fight!</span></div>');
+
 		}
 		else if ($('#characterFight').is(':empty')) {
 			$("#fightInfo").empty();
