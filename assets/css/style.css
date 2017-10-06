@@ -193,7 +193,7 @@ button:focus {
 }
 
 .fight-button, .reset-button {
-	margin: 25px 0px 20px 0px;
+	margin: 25px auto 20px auto;
 	padding-bottom: 5px;
 	font-family:"STARWARS";
 }
@@ -290,7 +290,7 @@ fieldset[disabled] .reset-button.active {
   background-color: #f2d224; 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 991px) {
 
 	#fightInfo .infoDiv {
 		position: relative;
@@ -300,6 +300,11 @@ fieldset[disabled] .reset-button.active {
 		margin-right: auto;
 		max-width: 100%;
 		top: 0px;
+	}
+
+	.container {
+		padding-left: 0px;
+		padding-right: 0px;
 	}
 
 }
