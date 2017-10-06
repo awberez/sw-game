@@ -242,7 +242,7 @@ fieldset[disabled] .fight-button.active {
 .reset-button:active, 
 .reset-button.active, 
 .open .dropdown-toggle.reset-button { 
-  color: #ffffff; 
+  color: #f2d224; 
   background-color: #1500B8; 
   border-color: #f2d224; 
 } 
@@ -274,6 +274,6 @@ fieldset[disabled] .reset-button.active {
  
 .reset-button .badge { 
   color: #000752; 
-  background-color: #ffffff; 
+  background-color: #f2d224; 
 }
 
