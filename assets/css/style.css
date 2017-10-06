@@ -70,18 +70,18 @@ button:focus {
 }
 
 #listHome img {
-	border: 5px ridge white;
+	border: 5px ridge gray;
 	border-radius: 10%;
 }
 
 #listHome .characterName {
-	border-right: 5px ridge white;
-	border-bottom: 5px ridge white;
+	border-right: 5px ridge gray;
+	border-bottom: 5px ridge gray;
 }
 
 #listHome .characterHealth {
-	border-right: 5px ridge white;
-	border-top: 5px ridge white;
+	border-right: 5px ridge gray;
+	border-top: 5px ridge gray;
 }
 
 #characterAttack img {
