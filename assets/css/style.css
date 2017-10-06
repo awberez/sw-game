@@ -55,7 +55,7 @@ button:focus {
 	background: rgba(255, 255, 255, 0.7);
 }
 
-#characterList .character:hover .overlay {
+#charList .character:hover .overlay {
     opacity: 1;
 }
 
@@ -76,62 +76,62 @@ button:focus {
 	margin-bottom: 60px;
 }
 
-#listHome .characterName {
+#listHome .charName {
 	border-right: 5px ridge gray;
 	border-bottom: 5px ridge gray;
 }
 
-#listHome .characterHealth {
+#listHome .charHealth {
 	border-right: 5px ridge gray;
 	border-top: 5px ridge gray;
 }
 
-#characterAttack img {
+#charAttack img {
 	border: 5px ridge #0002c6;
 	border-radius: 10%;
 }
 
-#characterAttack .characterName {
+#charAttack .charName {
 	border-right: 5px ridge #0002c6;
 	border-bottom: 5px ridge #0002c6;
 }
 
-#characterAttack .characterHealth {
+#charAttack .charHealth {
 	border-right: 5px ridge #0002c6;
 	border-top: 5px ridge #0002c6;
 }
 
-#characterDefend img {
+#charDefend img {
 	border: 5px ridge green;
 	border-radius: 10%;
 }
 
-#characterDefend .characterName {
+#charDefend .charName {
 	border-right: 5px ridge green;
 	border-bottom: 5px ridge green;
 }
 
-#characterDefend .characterHealth {
+#charDefend .charHealth {
 	border-right: 5px ridge green;
 	border-top: 5px ridge green;
 }
 
-#characterFight img {
+#charFight img {
 	border: 5px ridge #c60000;
 	border-radius: 10%;
 }
 
-#characterFight .characterName {
+#charFight .charName {
 	border-right: 5px ridge #c60000;
 	border-bottom: 5px ridge #c60000;
 }
 
-#characterFight .characterHealth {
+#charFight .charHealth {
 	border-right: 5px ridge #c60000;
 	border-top: 5px ridge #c60000;
 }
 
-.characterHealth {
+.charHealth {
 	position:absolute;
 	left: 5px;
 	top: 105px;
@@ -150,7 +150,7 @@ button:focus {
 	color: red !important;
 }
 
-.characterName {
+.charName {
 	position:absolute;
 	left: 5px;
 	top: 5px;
@@ -164,10 +164,10 @@ button:focus {
 .infoDiv {
 	position:absolute;
 	line-height: 45px;
-	padding: 0px 5px 0px 5px;
+	padding: 0px 50px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
 	border: 1px solid #f2d224;
-	padding: 5px;
+	padding: 7px 5px 7px 5px;
 	margin: 5px 10px 0px 10px;
 	background-color: black;
 }
@@ -186,7 +186,7 @@ button:focus {
 	top: 120px;
 }
 
-.characterInfo {
+.charInfo {
 	vertical-align: middle;
 	display: inline-block;
 	line-height: 15px;
