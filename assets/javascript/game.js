@@ -70,6 +70,7 @@ $(function(){
 	
 	$("#gameButton").on("click", ".reset-button", function () {
 		$("#characterAttack").empty();
+		$("#characterDefend").empty();
 		$("#attackHeading").empty();
 		$("#characterFight").empty();
 		$("#fightHeading").empty();
@@ -131,16 +132,15 @@ $(function(){
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
 		if (attackHealth <= 0) {
-			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">YOU LOSE!<br><br>Your failure has been noted.</span></div>');
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + defendData.name + ' has defeated ' + attackData.name + '!<br><br>YOU LOSE!</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
 			$("#characterFight").empty();
 			$('#gameButton').empty();
-			$("#fightInfo").empty();
 			charactersDefeated++
 			if (charactersDefeated == 3) {
-				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">YOU WIN!<br><br>You are one with the Force!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
 				resetGame();
 			}
 			else {
