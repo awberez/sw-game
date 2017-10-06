@@ -19,6 +19,7 @@ h3 {
 	background: black;
 	border: 5px ridge #f2d224;
 	padding: 10px 20px 5px 20px;
+	max-width: 100%;
 }
 
 button:focus { 
@@ -309,6 +310,15 @@ fieldset[disabled] .reset-button.active {
 
 	.overlay {
 		display: none;
+	}
+
+}
+
+@media screen and (max-width: 767px) {
+
+	h3 {
+		padding: 10px 0px 5px 0px;
+		width: 100%;
 	}
 
 }
