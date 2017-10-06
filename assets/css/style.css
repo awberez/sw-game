@@ -54,6 +54,10 @@ button:focus {
 	background: rgba(255, 255, 255, 0.7);
 }
 
+#characterList .character:hover .overlay {
+    opacity: 1;
+}
+
 .damage-effect {
 	position: absolute;
 	top: 5px;
@@ -63,10 +67,6 @@ button:focus {
 	border-radius: 6.5%;
 	display: none;
  	background: rgba(255, 0, 0, 0.7);
-}
-
-#characterList .character:hover .overlay {
-    opacity: 1;
 }
 
 #listHome img {
@@ -305,6 +305,14 @@ fieldset[disabled] .reset-button.active {
 	.container {
 		padding-left: 0px;
 		padding-right: 0px;
+	}
+
+	.overlay {
+		display: none;
+	}
+
+	#characterList .character:hover .overlay {
+		display: inline;
 	}
 
 }
