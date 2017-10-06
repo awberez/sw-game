@@ -129,7 +129,7 @@ $(function(){
 			$("#characterFight .healthNumber").removeClass('green').addClass('red');
 		}
 		if (attackHealth <= 0) {
-			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose!<br>Better luck next time!</span></div>');
+			$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">You lose!<br>Your failure has been noted.</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
@@ -143,7 +143,7 @@ $(function(){
 			}
 			else {
 				$('#characterList .overlay-target').addClass("overlay");
-				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">Choose a new Defender!</span></div>');
+				$("#fightInfo").html('<div class="infoDiv"><span class="characterInfo">' + attackData.name + ' has defeated ' + defendData.name + '! Choose a new enemy to fight!</span></div>');
 			}
 		}
     });
