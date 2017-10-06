@@ -181,6 +181,7 @@ button:focus {
 
 .fight-button, .reset-button {
 	margin: 25px 0px 20px 0px;
+	padding-bottom: 5px;
 	font-family:"STARWARS";
 }
 
