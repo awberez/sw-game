@@ -72,6 +72,7 @@ button:focus {
 #listHome img {
 	border: 5px ridge gray;
 	border-radius: 10%;
+	margin-bottom: 60px;
 }
 
 #listHome .characterName {
@@ -162,14 +163,26 @@ button:focus {
 .infoDiv {
 	position:absolute;
 	line-height: 45px;
-	left: 0;
-	top: 140px;
 	padding: 0px 5px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
 	border: 1px solid #f2d224;
 	padding: 5px;
 	margin: 5px 10px 0px 10px;
 	background-color: black;
+}
+
+#listHome .infoDiv {
+	left: 0;
+	top: 140px;
+}
+
+#fightInfo .infoDiv {
+	left: calc(-50vw + 50%);
+	right: calc(-50vw + 50%);
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+	top: 120px;
 }
 
 .characterInfo {
