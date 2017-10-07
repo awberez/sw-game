@@ -70,7 +70,7 @@ button:focus {
 .damage-effect {
 	position: absolute;
 	top: 5px;
-	left: 5px;
+	left: 4.5px;
 	height: 125px;
 	width: 125px;
 	border-radius: 6.5%;
