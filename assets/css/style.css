@@ -373,6 +373,8 @@ fieldset[disabled] .reset-button.active {
 		margin: 15px 5px 10px 5px;
 	}
 
+@media screen and (max-width: 345px) {
+
 	#charAttack .character {
 		left: calc(-5%);
 	}
@@ -382,20 +384,3 @@ fieldset[disabled] .reset-button.active {
 	}
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
