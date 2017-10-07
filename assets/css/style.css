@@ -99,7 +99,7 @@ button:focus {
 	border-radius: 10%;
 }
 
-#charAttack h4, #charFight h4 {
+#charAttack h4, #charDefend h4 {
 	width: 100px;
 }
 
@@ -113,36 +113,36 @@ button:focus {
 	border-top: 5px ridge #0002c6;
 }
 
-#charDefend {
+#charRemain {
 	margin-top: 20px;
 }
 
-#charDefend img {
+#charRemain img {
 	border: 5px ridge green;
 	border-radius: 10%;
 }
 
-#charDefend .charName {
+#charRemain .charName {
 	border-right: 5px ridge green;
 	border-bottom: 5px ridge green;
 }
 
-#charDefend .charHealth {
+#charRemain .charHealth {
 	border-right: 5px ridge green;
 	border-top: 5px ridge green;
 }
 
-#charFight img {
+#charDefend img {
 	border: 5px ridge #c60000;
 	border-radius: 10%;
 }
 
-#charFight .charName {
+#charDefend .charName {
 	border-right: 5px ridge #c60000;
 	border-bottom: 5px ridge #c60000;
 }
 
-#charFight .charHealth {
+#charDefend .charHealth {
 	border-right: 5px ridge #c60000;
 	border-top: 5px ridge #c60000;
 }
@@ -381,7 +381,7 @@ fieldset[disabled] .reset-button.active {
 		left: calc(-5%);
 	}
 
-	#charFight .character {
+	#charDefend .character {
 		left: calc(-5%);
 	}
 

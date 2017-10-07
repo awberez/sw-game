@@ -114,13 +114,13 @@ $(function(){
 	$("#gameButton").on("click", ".reset-button", function () {
 			//triggered by the button from resetGame
 		$("#charAttack").empty();
-		$("#charDefend").empty();
+		$("#charRemain").empty();
 		$("#attackHeading").empty();
-		$("#charFight").empty();
-		$("#fightHeading").empty();
+		$("#charDefend").empty();
+		$("#defendHeading").empty();
 		$("#fightInfo").empty();
 		$('#gameButton').empty();
-		$("#charDefend").removeClass('invisible');
+		$("#charRemain").removeClass('invisible');
 			//clears all dynamically created html from static divs
 		attackActual = 0;
     	charToDefeat = 3;
@@ -138,7 +138,7 @@ $(function(){
 			$("#charSelect").empty();
 				//removes text clutter during gameplay
 			$("#attackHeading").append("<h4>PLAYER</h4>");
-			$("#fightHeading").append("<h4>ENEMY</h4>");
+			$("#defendHeading").append("<h4>ENEMY</h4>");
 				//defining character areas
 			$('#charAttack').append(this);
 			$("#charAttack .character").removeClass("chosen");
@@ -146,23 +146,23 @@ $(function(){
 			attackHealth = attackData.healthPoints;
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 				//makes the player character unclickable after selection and retrieves the character's corresponding object for game use
-			$("#charDefend").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
-			$('#charDefend').append($("#charList"));
+			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
+			$('#charRemain').append($("#charList"));
 				//moves the remaining character cards to the appropriate location
 		}
-		else if ($('#charFight').is(':empty') || defendHealth <= 0) {
+		else if ($('#charDefend').is(':empty') || defendHealth <= 0) {
 				//chooses a new enemy to fight after choosing the player character or defeating an enemy
 			location.href = "#";
 				//solves another instance of possible scrolling for character selection
 			$("#fightInfo").empty();
-			$("#charFight").empty();
+			$("#charDefend").empty();
 				//removes the defeated enemy before appending the new one
-			$('#charFight').append(this);
-			defendData = $("#charFight .character").data("stats");
+			$('#charDefend').append(this);
+			defendData = $("#charDefend .character").data("stats");
 			defendHealth = defendData.healthPoints;
 				//retrieves the enemy's corresponding object for game use
 			$('#charList .overlay-target').removeClass("overlay");
-			$("#charDefend").addClass('invisible');
+			$("#charRemain").addClass('invisible');
 				//hides the remaining enemies to avoid visual clutter while fighting	
 			var fightBtn = $("<button>");
 		    $(fightBtn).addClass("btn btn-lg fight-button");
@@ -182,14 +182,14 @@ $(function(){
 		attackActual = attackActual + attackData.attackPower;
 			//increases the player character's attack power by the character's base attack power
 		defendHealth = defendHealth - attackActual;
-		$("#charFight .damage-effect").fadeIn("fast").fadeOut("fast");
-		$("#charFight .healthNumber").html(defendHealth);
-		healthColor(defendHealth, defendData.healthPoints, "#charFight");
+		$("#charDefend .damage-effect").fadeIn("fast").fadeOut("fast");
+		$("#charDefend .healthNumber").html(defendHealth);
+		healthColor(defendHealth, defendData.healthPoints, "#charDefend");
 			//reduces enemy's health by the player character's increased attack power, with visual feedback
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
 			//provides text feedback for the damage done by each character
 		if (attackHealth <= 0) {
-				//if the player character ever dies, even if the enemy dies simultaneously
+				//if the player character dies, even if the enemy dies simultaneously
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has been defeated by ' + defendData.name + '!<br><br>YOU LOSE!</span></div>');
 				//provides text feedback for the results of the fight
 			resetGame();
@@ -213,7 +213,7 @@ $(function(){
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight! (' + charToDefeat + ' remaining)</span></div>');
 					//provides text feedback for the results of the fight
 				$('#charList .overlay-target').addClass("overlay");
-				$("#charDefend").removeClass('invisible');
+				$("#charRemain").removeClass('invisible');
 					//reveals the remaining enemies to choose from
 			}
 		}
