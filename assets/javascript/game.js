@@ -54,7 +54,7 @@ $(function(){
     	name: "Wicket",
     	id: "characterWicket",
     	img: "assets/images/wicket.png",
-    	info: "Has 2 spinoff movies and a tv series.",
+    	info: "Has 2 spinoff movies and a TV series.",
         attackPower: 37,
         healthPoints: 75,
         counterAttack: 35
