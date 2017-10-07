@@ -114,12 +114,12 @@ $(function(){
 	$("#gameButton").on("click", ".reset-button", function () {
 			//triggered by the button from resetGame
 		$("#charAttack").empty();
-		$("#charRemain").empty();
 		$("#attackHeading").empty();
 		$("#charDefend").empty();
 		$("#defendHeading").empty();
-		$("#fightInfo").empty();
 		$('#gameButton').empty();
+		$("#fightInfo").empty();
+		$("#charRemain").empty();
 		$("#charRemain").removeClass('invisible');
 			//clears all dynamically created html from static divs
 		attackActual = 0;
@@ -133,7 +133,7 @@ $(function(){
 		if ($('#charAttack').is(':empty')) {
 				//only get to pick your character once per playthrough
 			location.href = "#";
-				//jumps to the top of page in case the user is on a mobile device or small tablet and scrolls to select a character
+				//jumps to the top of page in case the user is on a mobile device or small tablet and scrolled to select a character
 			$(".infoDiv").remove();
 			$("#charSelect").empty();
 				//removes text clutter during gameplay
