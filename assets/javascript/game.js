@@ -111,8 +111,6 @@ $(function(){
 
 	function resetGame() {  
 			//function to create a button that restores the page to its original state
-		$('#gameButton').empty();
-			//removes the "fight" button if the player lost
 		var resetBtn = $("<button>");
         	$(resetBtn).addClass("btn btn-lg reset-button");
         	$(resetBtn).html("REPLAY?");
@@ -201,16 +199,14 @@ $(function(){
 				//small delay before the "reset" button appears to prevent an accidental click after clicking the "fight" button
 		}
 		else if (defendHealth <= 0) {
-				//if the enemy dies and the player character doesn't
+				//if the enemy dies and the player character does not
 			charToDefeat--
 				//decrement the count of enemies left to fight
 			$('#gameButton').empty();
-				//removes the "fight" button until a new enemy is chosen
 			if (charToDefeat == 0) {
 					//the game is over if 3 enemies have been defeated
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
 					//provides text feedback for the results of the fight
-				$('#gameButton').empty();
 				setTimeout(resetGame, 1000 * .75);
 			}
 			else {
