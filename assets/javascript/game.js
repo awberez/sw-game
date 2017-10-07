@@ -60,15 +60,15 @@ $(function(){
         counterAttack: 35
     };
 
-	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy, wicket];	//array of the objects defined above
-    var attackActual = 0;
+	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy, wicket];
+		//array of the objects defined above
     var attackData;
     var attackHealth;
     var defendData;
     var defendHealth;
-    var charToDefeat = 3;	//total number of enemies to fight during one playthrough
-
-    
+    	//variables that will be defined later in functions that need a global scope
+    var attackActual = 0;	
+    var charToDefeat = 3;
    
 	function characterSelect() {  
 			//function to create clickable character cards
