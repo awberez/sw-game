@@ -163,14 +163,12 @@ $(function(){
 				//retrieves the enemy's corresponding object for game use
 			$('#charList .overlay-target').removeClass("overlay");
 			$("#charDefend").addClass('invisible');
-				//hides the remaining enemies to avoid visual clutter while fighting
-			if ($('#gameButton').is(':empty')) {
-					//only need the "fight" button while there's an active enemy character
-				var fightBtn = $("<button>");
-		        $(fightBtn).addClass("btn btn-lg fight-button");
-		        $(fightBtn).text("FIGHT!");
-				$("#gameButton").append(fightBtn);
-			}
+				//hides the remaining enemies to avoid visual clutter while fighting	
+			var fightBtn = $("<button>");
+		    $(fightBtn).addClass("btn btn-lg fight-button");
+		    $(fightBtn).text("FIGHT!");
+			$("#gameButton").append(fightBtn);
+				//only need the "fight" button while there's an active enemy character
 		}
     });
 
