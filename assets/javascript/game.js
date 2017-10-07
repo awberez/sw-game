@@ -179,7 +179,7 @@ $(function(){
 				//provides text feedback for the results of the fight
 			$('#gameButton').empty();
 			setTimeout(resetGame, 1000 * .75);
-				//small delay before the "reset" button appears to prevent an accidental click after clicking the "fight" button
+				//small delay before the "reset" button appears to prevent an accidental click after double-clicking the "fight" button
 		}
 		else if (defendHealth <= 0) {
 				//if the enemy dies and the player character does not
@@ -215,6 +215,6 @@ $(function(){
 		attackActual = 0;
     	charToDefeat = 3;
     	characterSelect();
-    		//reset the game with new character cards
+    		//resets the game with new character cards
 	});
 });
