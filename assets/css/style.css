@@ -19,6 +19,7 @@ h3 {
 h4 {
 	border: 2px solid #f2d224;
 	border-radius: 8px;
+	min-width: 135px;
 }
 
 h3, h4 {
@@ -27,7 +28,6 @@ h3, h4 {
 	color: #f2d224;
 	background: black;
 	padding: 10px 20px 5px 20px;
-	max-width: 100%;
 }
 
 button:focus { 
@@ -47,7 +47,7 @@ button:focus {
 
 .character {
 	display: inline-block;
-	margin: 20px 5px 10px 5px;
+	margin: 10px 5px 10px 5px;
 	position: relative;
 }
 
@@ -97,6 +97,10 @@ button:focus {
 #charAttack img {
 	border: 5px ridge #0002c6;
 	border-radius: 10%;
+}
+
+#charAttack h4, #charFight h4 {
+	width: 100px;
 }
 
 #charAttack .charName {
@@ -340,10 +344,14 @@ fieldset[disabled] .reset-button.active {
 		padding: 10px 0px 5px 0px;
 		width: 100%;
 		margin-bottom: 5px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	h3 {
 		font-size: 20px;
+		width: 100vw;
+		margin-left: -15px;
 	}
 
 	h4 {
@@ -364,6 +372,15 @@ fieldset[disabled] .reset-button.active {
 	.character {
 		margin: 10px 5px 10px 5px;
 	}
+
+	#charAttack .character {
+		left: calc(-5%);
+	}
+
+	#charFight .character {
+		left: calc(-5%);
+	}
+
 }
 
 

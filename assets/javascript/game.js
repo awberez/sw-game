@@ -93,6 +93,7 @@ $(function(){
 	$("#gameButton").on("click", ".reset-button", function () {
 		$("#charAttack").empty();
 		$("#charDefend").empty();
+		$("#charDefend").removeClass('invisible');
 		$("#attackHeading").empty();
 		$("#charFight").empty();
 		$("#fightHeading").empty();
@@ -107,8 +108,8 @@ $(function(){
 		if ($('#charAttack').is(':empty')) {
 			location.href = "#";
 			$(".infoDiv").remove();
-			$("#attackHeading").append("<h4>YOUR CHARACTER</h4>");
-			$("#fightHeading").append("<h4>DEFENDING ENEMY</h4>");
+			$("#attackHeading").append("<h4>PLAYER</h4>");
+			$("#fightHeading").append("<h4>ENEMY</h4>");
 			$('#charAttack').append(this);
 			$("#charAttack .character").removeClass("notChosen");
 			attackData = $("#charAttack .character").data("stats");
@@ -125,6 +126,7 @@ $(function(){
 			$("#charFight").empty();
 			$('#charFight').append(this);
 			$('#charList .overlay-target').removeClass("overlay");
+			$("#charDefend").addClass('invisible');
 			defendData = $("#charFight .character").data("stats");
 			defendHealth = defendData.healthPoints;
 			if ($('#gameButton').is(':empty')) {
@@ -133,9 +135,6 @@ $(function(){
 		        $(fightBtn).text("FIGHT!");
 				$("#gameButton").append(fightBtn);
 			}
-			if (charToDefeat == 1) {
-				$("#charDefend").empty();
-			} 
 		}
     });
 
@@ -179,6 +178,7 @@ $(function(){
 			}
 			else {
 				$('#charList .overlay-target').addClass("overlay");
+				$("#charDefend").removeClass('invisible');
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight! (' + charToDefeat + ' remaining)</span></div>');
 			}
 		}
