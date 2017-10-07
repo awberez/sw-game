@@ -137,7 +137,7 @@ $(function(){
 	$('body').on('click', '.chosen', function() {
 			//click event tied to the body instead of directly to ".chosen" to avoid issues with binding event handlers after resetting the game
 		if ($('#charAttack').is(':empty')) {
-				//only get to pick your character once per playthrough
+				//only get to pick the player character once per playthrough
 			location.href = "#";
 				//jumps to the top of page in case the user is on a mobile device or small tablet and scrolled to select a character
 			$(".infoDiv").remove();
@@ -150,8 +150,8 @@ $(function(){
 			$("#charAttack .character").removeClass("chosen");
 			attackData = $("#charAttack .character").data("stats");
 			attackHealth = attackData.healthPoints;
-			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 				//makes the player character unclickable after selection and retrieves the character's corresponding object for game use
+			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
 			$('#charRemain').append($("#charList"));
 				//moves the remaining character cards to the appropriate location
@@ -206,13 +206,11 @@ $(function(){
 			if (charToDefeat == 0) {
 					//the game is over if 3 enemies have been defeated
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
-					//provides text feedback for the results of the fight
 				setTimeout(resetGame, 1000 * .75);
 			}
 			else {
 					//there is still at least one enemy left to fight
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight! (' + charToDefeat + ' remaining)</span></div>');
-					//provides text feedback for the results of the fight
 				$('#charList .overlay-target').addClass("overlay");
 				$("#charRemain").removeClass('invisible');
 					//reveals the remaining enemies to choose from
