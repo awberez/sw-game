@@ -193,11 +193,12 @@ $(function(){
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
 			//provides text feedback for the damage done by each character
 		if (attackHealth <= 0) {
-				//if the player character dies, even if the enemy dies simultaneously
+				//the game is over if the player character dies, even if the enemy dies simultaneously
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has been defeated by ' + defendData.name + '!<br><br>YOU LOSE!</span></div>');
 				//provides text feedback for the results of the fight
-			resetGame();
-				//the game is over
+			$('#gameButton').empty();
+			setTimeout(resetGame, 1000 * .75);
+				//small delay before the "reset" button appears to prevent an accidental click after clicking the "fight" button
 		}
 		else if (defendHealth <= 0) {
 				//if the enemy dies and the player character doesn't
@@ -206,11 +207,11 @@ $(function(){
 			$('#gameButton').empty();
 				//removes the "fight" button until a new enemy is chosen
 			if (charToDefeat == 0) {
-					//if 3 enemies have been defeated
+					//the game is over if 3 enemies have been defeated
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
 					//provides text feedback for the results of the fight
-				resetGame();
-					//the game is over
+				$('#gameButton').empty();
+				setTimeout(resetGame, 1000 * .75);
 			}
 			else {
 					//there is still at least one enemy left to fight
