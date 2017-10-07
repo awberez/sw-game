@@ -88,6 +88,14 @@ $(function(){
 	characterSelect();
 		//immediately calling the function to initialize the first playthrough
 
+	function fightDamage(health, attack, charID) {
+			//function to calculate and display fight damage
+		health = health - attack;
+		$(charID + " .damage-effect").fadeIn("fast").fadeOut("fast");
+		$(charID + " .healthNumber").html(health);
+		return health;
+	}
+
 	function healthColor(health, healthTotal, charID) {  
 			//function to change the displayed color of a character's health as it decreases
 		if (health / healthTotal <= 0) {
@@ -174,16 +182,12 @@ $(function(){
 
     $("#gameButton").on("click", ".fight-button", function() {
 			//triggers a single iteration of combat
-		attackHealth = attackHealth - defendData.counterAttack;
-		$("#charAttack .damage-effect").fadeIn("fast").fadeOut("fast");
-		$("#charAttack .healthNumber").html(attackHealth);
-		healthColor(attackHealth, attackData.healthPoints, "#charAttack");
-			//reduces player character's health by the enemy's counter attack power, with visual feedback
 		attackActual = attackActual + attackData.attackPower;
 			//increases the player character's attack power by the character's base attack power
-		defendHealth = defendHealth - attackActual;
-		$("#charDefend .damage-effect").fadeIn("fast").fadeOut("fast");
-		$("#charDefend .healthNumber").html(defendHealth);
+		attackHealth = fightDamage(attackHealth, defendData.counterAttack, "#charAttack");
+		healthColor(attackHealth, attackData.healthPoints, "#charAttack");
+			//reduces player character's health by the enemy's counter attack power, with visual feedback
+		defendHealth = fightDamage(defendHealth, attackActual, "#charDefend");
 		healthColor(defendHealth, defendData.healthPoints, "#charDefend");
 			//reduces enemy's health by the player character's increased attack power, with visual feedback
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
