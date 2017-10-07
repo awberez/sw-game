@@ -116,23 +116,6 @@ $(function(){
         	$(resetBtn).html("REPLAY?");
         	$("#gameButton").append(resetBtn);
 	}
-	
-	$("#gameButton").on("click", ".reset-button", function () {
-			//triggered by the button from resetGame
-		$("#charAttack").empty();
-		$("#attackHeading").empty();
-		$("#charDefend").empty();
-		$("#defendHeading").empty();
-		$('#gameButton').empty();
-		$("#fightInfo").empty();
-		$("#charRemain").empty();
-		$("#charRemain").removeClass('invisible');
-			//clears all dynamically created html from static divs
-		attackActual = 0;
-    	charToDefeat = 3;
-    	characterSelect();
-    		//reset the game with new character cards
-	});
 
 	$('body').on('click', '.chosen', function() {
 			//click event tied to the body instead of directly to ".chosen" to avoid issues with binding event handlers after resetting the game
@@ -217,4 +200,21 @@ $(function(){
 			}
 		}
     });
+
+    $("#gameButton").on("click", ".reset-button", function () {
+			//triggered by the button from resetGame
+		$("#charAttack").empty();
+		$("#attackHeading").empty();
+		$("#charDefend").empty();
+		$("#defendHeading").empty();
+		$('#gameButton').empty();
+		$("#fightInfo").empty();
+		$("#charRemain").empty();
+		$("#charRemain").removeClass('invisible');
+			//clears all dynamically created html from static divs
+		attackActual = 0;
+    	charToDefeat = 3;
+    	characterSelect();
+    		//reset the game with new character cards
+	});
 });
