@@ -81,7 +81,7 @@ $(function(){
 			$("#" + charArr[i].id).data('stats', charArr[i]);
 			$("#" + charArr[i].id).append("<span class='charName'>" + charArr[i].name +"</span>");
 			$("#" + charArr[i].id).append("<span class='charHealth'>Health:<span class='healthNumber green'>" + charArr[i].healthPoints + "</span></span>");
-			$("#" + charArr[i].id).append("<div class='infoDiv'><span class='charInfo align-middle'>" + charArr[i].info + "</span></div>");
+			$("#" + charArr[i].id).append("<div class='infoDiv'><span class='charInfo'>" + charArr[i].info + "</span></div>");
 		}
 	}
 
