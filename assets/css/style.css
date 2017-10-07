@@ -18,6 +18,7 @@ h3 {
 
 h4 {
 	border: 2px solid #f2d224;
+	border-radius: 8px;
 }
 
 h3, h4 {
@@ -162,7 +163,11 @@ button:focus {
 }
 
 .red {
-	color: red !important;
+	color: #ff0000;
+}
+
+.dark-red {
+	color: #a00012;
 }
 
 .charName {

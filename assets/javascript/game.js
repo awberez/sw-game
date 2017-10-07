@@ -26,7 +26,7 @@ $(function(){
     	img: "assets/images/sarlacc.png",
     	info: "Unsung hero of <i>Return of the Jedi</i>.",
         attackPower: 3,
-        healthPoints: 310,
+        healthPoints: 300,
         counterAttack: 10
     };
 
@@ -50,7 +50,17 @@ $(function(){
         counterAttack: 12
     };
 
-	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy];
+    var wicket = {
+    	name: "Wicket",
+    	id: "characterWicket",
+    	img: "assets/images/wicket.png",
+    	info: "Has 2 spinoff movies and a tv series.",
+        attackPower: 37,
+        healthPoints: 75,
+        counterAttack: 35
+    };
+
+	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy, wicket];
     var attackActual = 0;
     var attackData;
     var attackHealth;
@@ -59,7 +69,7 @@ $(function(){
     var charToDefeat = 3;    
    
 	function characterSelect() {
-		$("#charSelect").append("<h4>CHOOSE YOUR CHARACTER</h4>")
+		$("#charSelect").append("<h4>CHARACTER SELECTION</h4>")
 		$("#listHome").html("<div id='charList'></div>");
 		for (i=0; i<charArr.length; i++) {
 			$("#charList").append('<div id=' + charArr[i].id + ' class="character notChosen"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
@@ -109,9 +119,10 @@ $(function(){
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 
 		}
-		else if ($('#charFight').is(':empty')) {
+		else if ($('#charFight').is(':empty') || defendHealth <= 0) {
 			location.href = "#";
 			$("#fightInfo").empty();
+			$("#charFight").empty();
 			$('#charFight').append(this);
 			$('#charList .overlay-target').removeClass("overlay");
 			defendData = $("#charFight .character").data("stats");
@@ -132,10 +143,13 @@ $(function(){
 		attackHealth = attackHealth - defendData.counterAttack;
 		$("#charAttack .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#charAttack .healthNumber").html(attackHealth);
-		if (attackHealth / attackData.healthPoints <= 0.33) {
+		if (attackHealth / attackData.healthPoints <= 0) {
+			$("#charAttack .healthNumber").removeClass('red').addClass('dark-red');
+		}
+		else if (attackHealth / attackData.healthPoints <= 0.33) {
 			$("#charAttack .healthNumber").removeClass('orange').addClass('red');
 		}
-		else if (attackHealth / attackData.healthPoints <= 0.5) {
+		else if (attackHealth / attackData.healthPoints <= 0.66) {
 			$("#charAttack .healthNumber").removeClass('green').addClass('orange');
 		}
 		attackActual = attackActual + attackData.attackPower;
@@ -143,18 +157,20 @@ $(function(){
 		$("#charFight .damage-effect").fadeIn("fast").fadeOut("fast");
 		$("#charFight .healthNumber").html(defendHealth);
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
-		if (defendHealth / defendData.healthPoints <= 0.33) {
+		if (defendHealth / defendData.healthPoints <= 0) {
+			$("#charFight .healthNumber").removeClass('red').addClass('dark-red');
+		}
+		else if (defendHealth / defendData.healthPoints <= 0.33) {
 			$("#charFight .healthNumber").removeClass('orange').addClass('red');
 		}
 		else if (defendHealth / defendData.healthPoints <= 0.66) {
 			$("#charFight .healthNumber").removeClass('green').addClass('orange');
 		}
 		if (attackHealth <= 0) {
-			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + defendData.name + ' has defeated ' + attackData.name + '!<br><br>YOU LOSE!</span></div>');
+			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has been defeated by ' + defendData.name + '!<br><br>YOU LOSE!</span></div>');
 			resetGame();
 		}
 		else if (defendHealth <= 0) {
-			$("#charFight").empty();
 			$('#gameButton').empty();
 			charToDefeat--
 			if (charToDefeat == 0) {
