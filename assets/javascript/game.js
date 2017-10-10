@@ -115,7 +115,7 @@ $(function(){
 	}
 
 	$('body').on('click', '#charList .character', function() {
-			//click event tied to the body instead of directly to ".chosen" to avoid issues with binding event handlers after resetting the game
+			//click event tied to the body instead of directly to character cards to avoid issues with binding event handlers after resetting the game
 		if ($('#charAttack').is(':empty')) {
 				//only get to pick the player character once per playthrough
 			location.href = "#";
