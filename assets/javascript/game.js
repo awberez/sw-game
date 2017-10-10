@@ -78,7 +78,7 @@ $(function(){
 			//creates a moveable container for the character cards inside a static element
 		for (i=0; i<charArr.length; i++) {
 				//creates a character card for each object in the array
-			$("#charList").append('<div id=' + charArr[i].id + ' class="character chosen"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
+			$("#charList").append('<div id=' + charArr[i].id + ' class="character notChosen"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
 			$("#" + charArr[i].id).data('stats', charArr[i]);
 			$("#" + charArr[i].id).append("<span class='charName'>" + charArr[i].name +"</span>");
 			$("#" + charArr[i].id).append("<span class='charHealth'>Health:<span class='healthNumber green'>" + charArr[i].healthPoints + "</span></span>");
@@ -114,7 +114,7 @@ $(function(){
         	$("#gameButton").append(resetBtn);
 	}
 
-	$('body').on('click', '.chosen', function() {
+	$('body').on('click', '.notChosen', function() {
 			//click event tied to the body instead of directly to ".chosen" to avoid issues with binding event handlers after resetting the game
 		if ($('#charAttack').is(':empty')) {
 				//only get to pick the player character once per playthrough
@@ -127,10 +127,10 @@ $(function(){
 			$("#defendHeading").append("<h4>ENEMY</h4>");
 				//defining character areas
 			$('#charAttack').append(this);
-			$("#charAttack .character").removeClass("chosen");
+			$("#charAttack .character").removeClass("notChosen");
 			attackData = $("#charAttack .character").data("stats");
 			attackHealth = attackData.healthPoints;
-				//makes the player character unclickable after selection and retrieves the character's corresponding object for game use
+				//makes the player character unclickable after selection and retrieves the corresponding object for game use
 			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
 			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
 			$('#charRemain').append($("#charList"));
@@ -144,9 +144,10 @@ $(function(){
 			$("#charDefend").empty();
 				//removes the defeated enemy before appending the new one
 			$('#charDefend').append(this);
+			$("#charDefend .character").removeClass("notChosen");
 			defendData = $("#charDefend .character").data("stats");
 			defendHealth = defendData.healthPoints;
-				//retrieves the enemy's corresponding object for game use
+				//makes the active enemy unclickable after selection retrieves the corresponding object for game use
 			$('#charList .overlay-target').removeClass("overlay");
 			$("#charRemain").addClass('invisible');
 				//hides the remaining enemies to avoid visual clutter while fighting	
