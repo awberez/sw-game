@@ -69,6 +69,7 @@ $(function(){
     	//variables that will be defined later in functions that need a global scope
     var attackActual = 0;	
     var charToDefeat = 3;
+    	//number of enemies to be fought in one playthrough
    
 	function characterSelect() {  
 			//function to create clickable character cards
@@ -88,16 +89,11 @@ $(function(){
 	characterSelect();
 		//immediately calling the function to initialize the first playthrough
 
-	function fightDamage(health, attack, charID) {
+	function fightResult(health, healthTotal, attack, charID) {
 			//function to calculate and display fight damage
 		health = health - attack;
 		$(charID + " .damage-effect").fadeIn("fast").fadeOut("fast");
 		$(charID + " .healthNumber").html(health);
-		return health;
-	}
-
-	function healthColor(health, healthTotal, charID) {  
-			//function to change the displayed color of a character's health as it decreases
 		if (health / healthTotal <= 0) {
 			$(charID + " .healthNumber").removeClass('red').addClass('dark-red');
 		}
@@ -107,6 +103,7 @@ $(function(){
 		else if (health / healthTotal <= 0.66) {
 			$(charID + " .healthNumber").removeClass('green').addClass('orange');
 		}
+		return health;
 	}
 
 	function resetGame() {  
@@ -165,12 +162,9 @@ $(function(){
 			//triggers a single iteration of combat
 		attackActual = attackActual + attackData.attackPower;
 			//increases the player character's attack power by the character's base attack power
-		attackHealth = fightDamage(attackHealth, defendData.counterAttack, "#charAttack");
-		healthColor(attackHealth, attackData.healthPoints, "#charAttack");
-			//reduces player character's health by the enemy's counter attack power, with visual feedback
-		defendHealth = fightDamage(defendHealth, attackActual, "#charDefend");
-		healthColor(defendHealth, defendData.healthPoints, "#charDefend");
-			//reduces enemy's health by the player character's increased attack power, with visual feedback
+		attackHealth = fightResult(attackHealth, attackData.healthPoints, defendData.counterAttack, "#charAttack");
+		defendHealth = fightResult(defendHealth, defendData.healthPoints, attackActual, "#charDefend");
+			//reduces each active character's health by the other's attack, with visual feedback
 		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
 			//provides text feedback for the damage done by each character
 		if (attackHealth <= 0) {
@@ -187,7 +181,7 @@ $(function(){
 				//decrement the count of enemies left to fight
 			$('#gameButton').empty();
 			if (charToDefeat == 0) {
-					//the game is over if 3 enemies have been defeated
+					//the game is over if enough enemies have been defeated
 				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
 				setTimeout(resetGame, 1000 * .75);
 			}
