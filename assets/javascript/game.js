@@ -1,67 +1,50 @@
 $(function(){
 
-	var greedo = {
-		name: "Greedo",
-		id: "characterGreedo",
-		img: "assets/images/greedo.jpg",
-		info: "Poor aim, worse luck.",
-        attackPower: 25,
-        healthPoints: 100,
-        counterAttack: 25
-    };
+	var charArr = [
+	    {name: "Greedo",
+			id: "characterGreedo",
+			img: "assets/images/greedo.jpg",
+			info: "Poor aim, worse luck.",
+	        attackPower: 25,
+	        healthPoints: 100,
+	        counterAttack: 25},
+	    {name: "IG-88",
+	    	id: "characterIg88",
+	    	img: "assets/images/ig-88.jpg",
+	    	info: "Droid extra with a killer backstory.",
+	        attackPower: 15,
+	        healthPoints: 130,
+	        counterAttack: 20},
+	    {name: "Sarlacc",
+	    	id: "characterSarlacc",
+	    	img: "assets/images/sarlacc.png",
+	    	info: "Unsung hero of <i>Return of the Jedi</i>.",
+	        attackPower: 3,
+	        healthPoints: 300,
+	        counterAttack: 10},
+	    {name: "Tauntaun",
+	    	id: "characterTauntaun",
+	    	img: "assets/images/tauntaun.jpg",
+	    	info: "Loyal in battle, warm in winter.",
+	        attackPower: 10,
+	        healthPoints: 150,
+	        counterAttack: 15},
+	    {name: "Droopy McCool",	  //seriously a real character, look it up
+	    	id: "characterDroopy",
+	    	img: "assets/images/droopy.jpg",
+	    	info: "Best stage name in the galaxy.",
+	        attackPower: 7,
+	        healthPoints: 200,
+	        counterAttack: 12},
+	    {name: "Wicket",
+	    	id: "characterWicket",
+	    	img: "assets/images/wicket.png",
+	    	info: "Has 2 spinoff movies and a TV series.",
+	        attackPower: 37,
+	        healthPoints: 75,
+	        counterAttack: 35},
+	];
 
-    var ig88 = {
-    	name: "IG-88",
-    	id: "characterIg88",
-    	img: "assets/images/ig-88.jpg",
-    	info: "Droid extra with a killer backstory.",
-        attackPower: 15,
-        healthPoints: 130,
-        counterAttack: 20
-    };
-
-    var sarlacc = {
-    	name: "Sarlacc",
-    	id: "characterSarlacc",
-    	img: "assets/images/sarlacc.png",
-    	info: "Unsung hero of <i>Return of the Jedi</i>.",
-        attackPower: 3,
-        healthPoints: 300,
-        counterAttack: 10
-    };
-
-    var tauntaun = {
-    	name: "Tauntaun",
-    	id: "characterTauntaun",
-    	img: "assets/images/tauntaun.jpg",
-    	info: "Loyal in battle, warm in winter.",
-        attackPower: 10,
-        healthPoints: 150,
-        counterAttack: 15
-    };
-
-    var droopy = {
-    	name: "Droopy McCool",	  //seriously a real character, look it up
-    	id: "characterDroopy",
-    	img: "assets/images/droopy.jpg",
-    	info: "Best stage name in the galaxy.",
-        attackPower: 7,
-        healthPoints: 200,
-        counterAttack: 12
-    };
-
-    var wicket = {
-    	name: "Wicket",
-    	id: "characterWicket",
-    	img: "assets/images/wicket.png",
-    	info: "Has 2 spinoff movies and a TV series.",
-        attackPower: 37,
-        healthPoints: 75,
-        counterAttack: 35
-    };
-
-	var charArr = [greedo, ig88, sarlacc, tauntaun, droopy, wicket];
-		//array of the objects defined above
     var attackData;
     var attackHealth;
     var defendData;
