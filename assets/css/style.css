@@ -13,11 +13,11 @@ body {
 }
 
 h3 {
-	border: 5px ridge #f2d224;
+	border: 5px ridge #FFD700;
 }
 
 h4 {
-	border: 2px solid #f2d224;
+	border: 2px solid #FFD700;
 	border-radius: 8px;
 	min-width: 135px;
 }
@@ -25,7 +25,7 @@ h4 {
 h3, h4 {
 	font-family:"STARWARS";
 	display: inline-block;
-	color: #f2d224;
+	color: #FFD700;
 	background: black;
 	padding: 10px 20px 5px 20px;
 }
@@ -227,7 +227,7 @@ img {
 	position:absolute;
 	left: 5px;
 	top: 105px;
-	color: #f2d224;
+	color: #FFD700;
 	background: rgba(0, 0, 0, 0.75);
 	padding: 0px 5px 0px 7px;
 	border-radius: 0px 8.35px;
@@ -258,7 +258,7 @@ img {
 	position:absolute;
 	left: 5px;
 	top: 5px;
-	color: #f2d224;
+	color: #FFD700;
 	background: rgba(0, 0, 0, 0.75);
 	padding: 0px 5px 0px 7px;
 	border-radius: 8.35px 0px 8.35px;
@@ -270,7 +270,7 @@ img {
 	line-height: 45px;
 	padding: 0px 50px 0px 5px;
 	font-family: 'Anonymous Pro', monospace;
-	border: 1px solid #f2d224;
+	border: 1px solid #FFD700;
 	padding: 7px 5px 7px 5px;
 	margin: 5px 10px 0px 10px;
 	background-color: black;
@@ -294,7 +294,7 @@ img {
 	vertical-align: middle;
 	display: inline-block;
 	line-height: 15px;
-	color: #f2d224;
+	color: #FFD700;
 }
 
 .fight-button, .reset-button {
@@ -304,9 +304,9 @@ img {
 }
 
 .fight-button { 
-  color: #f2d224; 
+  color: #FFD700; 
   background-color: #520000; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .fight-button:hover, 
@@ -314,9 +314,9 @@ img {
 .fight-button:active, 
 .fight-button.active, 
 .open .dropdown-toggle.fight-button { 
-  color: #f2d224; 
+  color: #FFD700; 
   background-color: #B80000; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .fight-button:active, 
@@ -341,18 +341,18 @@ fieldset[disabled] .fight-button:active,
 .fight-button[disabled].active, 
 fieldset[disabled] .fight-button.active { 
   background-color: #520000; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .fight-button .badge { 
   color: #520000; 
-  background-color: #f2d224; 
+  background-color: #FFD700; 
 }
 
 .reset-button { 
-  color: #f2d224; 
+  color: #FFD700; 
   background-color: #000752; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .reset-button:hover, 
@@ -360,9 +360,9 @@ fieldset[disabled] .fight-button.active {
 .reset-button:active, 
 .reset-button.active, 
 .open .dropdown-toggle.reset-button { 
-  color: #f2d224; 
+  color: #FFD700; 
   background-color: #1500B8; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .reset-button:active, 
@@ -387,12 +387,12 @@ fieldset[disabled] .reset-button:active,
 .reset-button[disabled].active, 
 fieldset[disabled] .reset-button.active { 
   background-color: #000752; 
-  border-color: #f2d224; 
+  border-color: #FFD700; 
 } 
  
 .reset-button .badge { 
   color: #000752; 
-  background-color: #f2d224; 
+  background-color: #FFD700; 
 }
 
 @media screen and (max-width: 991px) {
