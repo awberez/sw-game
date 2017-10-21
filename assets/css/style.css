@@ -6,7 +6,7 @@ html {
 }
 
 body {
-	background-image: url(../images/NewHope.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/NewHope.jpg);
 	background-size: auto 1200px;
 	background-position: top 0px right 0px;
 	background-repeat: no-repeat;
@@ -34,10 +34,8 @@ button:focus {
     outline: 0 !important; 
 }
 
-.fadeBackground {
-	position: relative;
-	background-color:rgba(0, 0, 0, 0.7);
-	min-height: 100vh;
+img {
+	filter: saturate(125%);
 }
 
 .logo-image {
@@ -53,17 +51,55 @@ button:focus {
 
 .overlay {
 	position: absolute;
- 	top: 5px;
-	left: 5px;
-	height: 125px;
-	width: 125px;
-	border-radius: 6.5%;
-	opacity: 0;
-	transition: .5s ease;
-	background: rgba(255, 255, 255, 0.7);
+ 	top: 0px;
+	left: 0px;
+	height: 135px;
+	width: 135px;
+	border: 5px ridge gray;
+	border-radius: 10%;
+}
+
+#charList .character:hover img, #advCharList .character:hover img, #charRemain .character:hover img {
+    filter: grayscale(0%) saturate(125%);
+    transition: .3s ease;
 }
 
 #charList .character:hover .overlay {
+    top: -5px;
+	left: -5px;
+	height: 145px;
+	width: 145px;
+	border: 10px ridge gray;
+	border-radius: 13%;
+    transition: .3s ease;
+}
+
+#advCharList .character:hover .overlay {
+    top: -5px;
+	left: -5px;
+	height: 145px;
+	width: 145px;
+	border: 10px ridge purple;
+	border-radius: 13%;
+    transition: .3s ease;
+}
+
+#charRemain .character:hover .overlay {
+    top: -5px;
+	left: -5px;
+	height: 145px;
+	width: 145px;
+	border: 10px ridge green;
+	border-radius: 13%;
+    transition: .3s ease;
+}
+
+.advSpecial {
+	opacity: 0;
+	transition: .3s ease;
+}
+
+#advCharList .character:hover .advSpecial {
     opacity: 1;
 }
 
@@ -82,6 +118,11 @@ button:focus {
 	border: 5px ridge gray;
 	border-radius: 10%;
 	margin-bottom: 60px;
+	filter: grayscale(75%);
+}
+
+#listHome .overlay {
+	border: 5px ridge gray;
 }
 
 #listHome .charName {
@@ -94,9 +135,34 @@ button:focus {
 	border-top: 5px ridge gray;
 }
 
+#advListHome img {
+	border: 5px ridge purple;
+	border-radius: 10%;
+	margin-bottom: 60px;
+	filter: grayscale(75%);
+}
+
+#advListHome .overlay {
+	border: 5px ridge purple;
+}
+
+#advListHome .charName {
+	border-right: 5px ridge purple;
+	border-bottom: 5px ridge purple;
+}
+
+#advListHome .charHealth{
+	border-right: 5px ridge purple;
+	border-top: 5px ridge purple;
+}
+
 #charAttack img {
 	border: 5px ridge #0002c6;
 	border-radius: 10%;
+}
+
+#charAttack .overlay {
+	border: 5px ridge #0002c6;
 }
 
 #charAttack h4, #charDefend h4 {
@@ -120,6 +186,11 @@ button:focus {
 #charRemain img {
 	border: 5px ridge green;
 	border-radius: 10%;
+	filter: grayscale(75%);
+}
+
+#charRemain .overlay {
+	border: 5px ridge green;
 }
 
 #charRemain .charName {
@@ -135,6 +206,10 @@ button:focus {
 #charDefend img {
 	border: 5px ridge #c60000;
 	border-radius: 10%;
+}
+
+#charDefend .overlay {
+	border: 5px ridge #c60000;
 }
 
 #charDefend .charName {
@@ -153,9 +228,13 @@ button:focus {
 	top: 105px;
 	color: #f2d224;
 	background: rgba(0, 0, 0, 0.75);
-	padding: 0px 5px 0px 5px;
-	border-radius: 0px 8px;
+	padding: 0px 5px 0px 7px;
+	border-radius: 0px 8.35px;
 	font-family: 'Anonymous Pro', monospace;
+}
+
+.blue {
+	color: #68e0ff;
 }
 
 .green {
@@ -180,8 +259,8 @@ button:focus {
 	top: 5px;
 	color: #f2d224;
 	background: rgba(0, 0, 0, 0.75);
-	padding: 0px 5px 0px 5px;
-	border-radius: 8px 0px 8px;
+	padding: 0px 5px 0px 7px;
+	border-radius: 8.35px 0px 8.35px;
 	font-family: 'Anonymous Pro', monospace;
 }
 
@@ -196,7 +275,7 @@ button:focus {
 	background-color: black;
 }
 
-#listHome .infoDiv {
+#listHome .infoDiv, #advListHome .infoDiv {
 	left: 0;
 	top: 140px;
 }
@@ -330,10 +409,6 @@ fieldset[disabled] .reset-button.active {
 	.container {
 		padding-left: 0px;
 		padding-right: 0px;
-	}
-
-	.overlay {
-		display: none;
 	}
 
 }

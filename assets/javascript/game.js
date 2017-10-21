@@ -5,9 +5,9 @@ $(function(){
 			id: "characterGreedo",
 			img: "assets/images/greedo.jpg",
 			info: "Poor aim, worse luck.",
-	        attackPower: 25,
+	        attackPower: 30,
 	        healthPoints: 100,
-	        counterAttack: 25},
+	        counterAttack: 30},
 	    {name: "IG-88",
 	    	id: "characterIg88",
 	    	img: "assets/images/ig-88.jpg",
@@ -29,7 +29,7 @@ $(function(){
 	        attackPower: 10,
 	        healthPoints: 150,
 	        counterAttack: 15},
-	    {name: "Droopy McCool",	  //seriously a real character, look it up
+	    {name: "Droopy McCool",
 	    	id: "characterDroopy",
 	    	img: "assets/images/droopy.jpg",
 	    	info: "Best stage name in the galaxy.",
@@ -43,154 +43,241 @@ $(function(){
 	        attackPower: 37,
 	        healthPoints: 75,
 	        counterAttack: 35},
-	];
+	],
 
-    var attackData;
-    var attackHealth;
-    var defendData;
-    var defendHealth;
-    	//variables that will be defined later in functions that need a global scope
-    var attackActual = 0;	
-    var charToDefeat = 3;
-    	//number of enemies to be fought in one playthrough
-   
-	function characterSelect() {  
-			//function to create clickable character cards
-		$("#charSelect").append("<h4>CHARACTER SELECTION</h4>")
-		$("#listHome").html("<div id='charList'></div>");
-			//creates a moveable container for the character cards inside a static element
-		for (i=0; i<charArr.length; i++) {
-				//creates a character card for each object in the array
-			$("#charList").append('<div id=' + charArr[i].id + ' class="character"><img src=' + charArr[i].img + ' /><div class="overlay-target overlay"></div><div class="damage-effect"></div></div>');
-			$("#" + charArr[i].id).data('stats', charArr[i]);
-			$("#" + charArr[i].id).append("<span class='charName'>" + charArr[i].name +"</span>");
-			$("#" + charArr[i].id).append("<span class='charHealth'>Health:<span class='healthNumber green'>" + charArr[i].healthPoints + "</span></span>");
-			$("#" + charArr[i].id).append("<div class='infoDiv'><span class='charInfo'>" + charArr[i].info + "</span></div>");
+	advArr = [
+	    {name: "Wedge",
+	    	id: "characterWedge",
+	    	img: "assets/images/wedge.jpg",
+	    	info: "Ace pilot of the Rebel Alliance.",
+	    	tooltip: "<b>ABILITY:</b> <i>Critical Hits</i>",
+	    	specialAttack: "crit",
+	    	specialValue: 8,
+	        attackPower: 0,
+	        healthPoints: 175,
+	        counterAttack: 0},
+	    {name: "Dathcha",
+	    	id: "characterDathcha",
+	    	img: "assets/images/dathcha.jpg",
+	    	info: "Nobly rescued R2-D2 from the desert.",
+	    	tooltip: "<b>ABILITY:</b> <i>Random Damage</i>",
+	    	specialAttack: "rand",
+	    	specialValue: 10,
+	        attackPower: 0,
+	        healthPoints: 250,
+	        counterAttack: 0},
+	    {name: "Lobot",
+	    	id: "characterLobot",
+	    	img: "assets/images/lobot.jpg",
+	    	info: "Lando's right-hand cyborg.",
+	    	tooltip: "<b>ABILITY:</b> <i>Energy Shield</i>",
+	    	specialDefend: "shield",
+	        attackPower: 20,
+	        healthPoints: 50,
+	        shieldPoints: 50,
+	        counterAttack: 25},
+	],
+
+   	attackData, attackHealth, defendData, defendHealth, attackShield = 0, defendShield = 0, attackActual = 0, charToDefeat = 3, advanced = false;
+
+	function characterSelect(arr, where) {
+		for (let character of arr) {
+			$(where).append(`<div id=${character.id} class="character"><img src=${character.img} /><div class="overlay"></div><div class="damage-effect"></div></div>`);
+			$(`#${character.id}`).data('stats', character)
+				.append(`<span class='charName'>${character.name}</span>`)
+				.append(`<span class='charHealth'><span class="healthType">Health:</span><span class='healthNumber green'>${character.healthPoints}</span></span>`)
+				.append(`<div class='infoDiv'><span class='charInfo'>${character.info}</span></div>`);
+			if (character.tooltip) {
+				$(`#${character.id}`).append(`<div class='infoDiv advSpecial'><span class='charInfo'>${character.tooltip}</span></div>`);
+			}
 		}
 	}
 
-	characterSelect();
-		//immediately calling the function to initialize the first playthrough
+	function criticalHits(x) {
+		let chance = ~~(Math.random() * 5) + 1
+		return chance < 5 ? x : x * 3;
+	}
 
-	function fightResult(health, healthTotal, attack, charID) {
-			//function to calculate and display fight damage
+	function randomDamage(x) {
+		return (~~(Math.random() * x) + 1)
+	}
+
+	function specialAttackCalc(special, attack, value) {
+		if (special == "crit") {
+    		return attack = criticalHits(value);
+    	}
+    	else if (special == "rand") {
+    		return attack = randomDamage(value);
+    	}
+	}
+
+	function fightResult(health, healthTotal, attack, charID, shield) {
 		health = health - attack;
-		$(charID + " .damage-effect").fadeIn("fast").fadeOut("fast");
-		$(charID + " .healthNumber").html(health);
-		if (health / healthTotal <= 0) {
-			$(charID + " .healthNumber").removeClass('red').addClass('dark-red');
+		if (shield) {
+			health = health + 3;
+			$(`${charID} .damage-effect`).css("background", "rgba(104, 224, 255, 0.7)");
 		}
-		else if (health / healthTotal <= 0.33) {
-			$(charID + " .healthNumber").removeClass('orange').addClass('red');
+		else {
+			$(`${charID} .damage-effect`).css("background", "rgba(255, 0, 0, 0.7)");
 		}
-		else if (health / healthTotal <= 0.66) {
-			$(charID + " .healthNumber").removeClass('green').addClass('orange');
+		$(`${charID} .damage-effect`).fadeIn("fast").fadeOut("fast");
+		$(`${charID} .healthNumber`).html(health);
+		if (!shield) {
+			if (health / healthTotal <= 0) {
+				$(`${charID} .healthNumber`).removeClass('red').addClass('dark-red');
+			}
+			else if (health / healthTotal <= 0.33) {
+				$(`${charID} .healthNumber`).removeClass('orange').addClass('red');
+			}
+			else if (health / healthTotal <= 0.66) {
+				$(`${charID} .healthNumber`).removeClass('green').addClass('orange');
+			}
 		}
 		return health;
 	}
 
-	function resetGame() {  
-			//function to create a button that restores the page to its original state
-		var resetBtn = $("<button>");
-        	$(resetBtn).addClass("btn btn-lg reset-button");
-        	$(resetBtn).html("REPLAY?");
-        	$("#gameButton").append(resetBtn);
+	function resetGame() {
+		let resetBtn = $("<button>");
+        $(resetBtn).addClass("btn btn-lg reset-button").html("REPLAY?");
+        $("#gameButton").append(resetBtn);
 	}
 
-	$('body').on('click', '#charList .character', function() {
-			//click event tied to the body instead of directly to character cards to avoid issues with binding event handlers after resetting the game
+	function gameStart() {
+		characterSelect(charArr, "#charList");
+		advanced = localStorage.getItem("advanced");
+		if (advanced) {
+    		$("#advListHome").html("<div id='advCharList' class='charClick'></div>");
+    		$("#advCharSelect").append("<br><h4>ADVANCED CHARACTERS</h4>");
+    		characterSelect(advArr, "#advCharList");
+    	}
+	}
+
+	gameStart();
+
+	$('body').on('click', '.charClick .character', function() {
 		if ($('#charAttack').is(':empty')) {
-				//only get to pick the player character once per playthrough
 			location.href = "#";
-				//jumps to the top of page in case the user is on a mobile device or small tablet and scrolled to select a character
 			$(".infoDiv").remove();
 			$("#charSelect").empty();
-				//removes text clutter during gameplay
+			$("#advCharSelect").empty();
 			$("#attackHeading").append("<h4>PLAYER</h4>");
 			$("#defendHeading").append("<h4>ENEMY</h4>");
-				//defining character areas
 			$('#charAttack').append(this);
 			attackData = $("#charAttack .character").data("stats");
+			if (attackData.specialDefend == "shield") {
+    			attackShield = attackData.shieldPoints;
+    			$("#charAttack .healthType").text(`Shield:`);
+    			$("#charAttack .healthNumber").html(attackShield).removeClass('green').addClass('blue');
+    		}
 			attackHealth = attackData.healthPoints;
-				//retrieves player character's corresponding object for game use
-			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">Can ' + attackData.name + ' defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>');
-			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>");
-			$('#charRemain').append($("#charList"));
-				//moves the remaining character cards to the appropriate location
+			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">Can ${attackData.name} defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>`);
+			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>").append($("#charList"));
+			$("#charList").append($("#advCharList"));
 		}
 		else if ($('#charDefend').is(':empty') || defendHealth <= 0) {
-				//chooses a new enemy to fight after choosing the player character or defeating an enemy
 			location.href = "#";
-				//solves another instance of possible scrolling for character selection
 			$("#fightInfo").empty();
-			$("#charDefend").empty();
-				//removes the defeated enemy before appending the new one
-			$('#charDefend').append(this);
+			$("#charDefend").empty().append(this);
 			defendData = $("#charDefend .character").data("stats");
+			if (defendData.specialDefend == "shield") {
+    			defendShield = defendData.shieldPoints;
+    			$("#charDefend .healthType").text(`Shield:`);
+    			$("#charDefend .healthNumber").html(defendShield).removeClass('green').addClass('blue');
+    		}
 			defendHealth = defendData.healthPoints;
-				//retrieves active enemey's corresponding object for game use
-			$('#charList .overlay-target').removeClass("overlay");
 			$("#charRemain").addClass('invisible');
-				//hides the remaining enemies to avoid visual clutter while fighting	
-			var fightBtn = $("<button>");
-		    $(fightBtn).addClass("btn btn-lg fight-button");
-		    $(fightBtn).text("FIGHT!");
+			let fightBtn = $("<button>");
+		    $(fightBtn).addClass("btn btn-lg fight-button").text("FIGHT!");
 			$("#gameButton").append(fightBtn);
-				//only need the "fight" button while there's an active enemy character
 		}
     });
 
     $("#gameButton").on("click", ".fight-button", function() {
-			//triggers a single iteration of combat
+    	if (attackData.specialAttack) {
+    		attackData.attackPower = specialAttackCalc(attackData.specialAttack, attackData.attackPower, attackData.specialValue);
+    	}
+    	if (defendData.specialAttack) {
+    		defendData.counterAttack = specialAttackCalc(defendData.specialAttack, defendData.counterAttack, defendData.specialValue);
+    	}
 		attackActual = attackActual + attackData.attackPower;
-			//increases the player character's attack power by the character's base attack power
-		attackHealth = fightResult(attackHealth, attackData.healthPoints, defendData.counterAttack, "#charAttack");
-		defendHealth = fightResult(defendHealth, defendData.healthPoints, attackActual, "#charDefend");
-			//reduces each active character's health by the other's attack, with visual feedback
-		$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' did ' + attackActual + ' damage to ' + defendData.name + '.<br><br>' + defendData.name + ' did ' + defendData.counterAttack + ' damage to ' + attackData.name + '.</span></div>');
-			//provides text feedback for the damage done by each character
+		if (attackShield > 0) {
+			attackShield = fightResult(attackShield, attackData.healthPoints, defendData.counterAttack, "#charAttack", true);
+			if (attackShield <= 0) {
+				$("#charAttack .healthType").text(`Health:`);
+				$("#charAttack .healthNumber").html(attackData.healthPoints).removeClass('blue').addClass('green');
+			}
+		}
+		else {
+			attackHealth = fightResult(attackHealth, attackData.healthPoints, defendData.counterAttack, "#charAttack", false);
+		}
+		if (defendShield > 0) {
+			defendShield = fightResult(defendShield, defendData.healthPoints, attackActual, "#charDefend", true);
+			if (defendShield <= 0) {
+				$("#charDefend .healthType").text(`Health:`);
+				$("#charDefend .healthNumber").html(defendData.healthPoints).removeClass('blue').addClass('green');
+			}
+		}
+		else {
+			defendHealth = fightResult(defendHealth, defendData.healthPoints, attackActual, "#charDefend", false);
+		}
+		if (attackShield > 0 || attackHealth == attackData.healthPoints) {
+			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} did ${attackActual} damage to ${defendData.name}.<br><br>${defendData.name} did ${defendData.counterAttack - 3} damage to ${attackData.name}.</span></div>`);
+		}
+		else if (defendShield > 0 || defendHealth == defendData.healthPoints) {
+			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} did ${attackActual - 3} damage to ${defendData.name}.<br><br>${defendData.name} did ${defendData.counterAttack} damage to ${attackData.name}.</span></div>`);
+		}
+		else {
+			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} did ${attackActual} damage to ${defendData.name}.<br><br>${defendData.name} did ${defendData.counterAttack} damage to ${attackData.name}.</span></div>`);
+
+		}
 		if (attackHealth <= 0) {
-				//the game is over if the player character dies, even if the enemy dies simultaneously
-			$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has been defeated by ' + defendData.name + '!<br><br>YOU LOSE!</span></div>');
-				//provides text feedback for the results of the fight
+			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has been defeated by ${defendData.name}!<br><br>YOU LOSE!</span></div>`);
 			$('#gameButton').empty();
-			setTimeout(resetGame, 1000 * .75);
-				//small delay before the "reset" button appears to prevent an accidental click after double-clicking the "fight" button
+			setTimeout(resetGame, 1e3* .75);
 		}
 		else if (defendHealth <= 0) {
-				//if the enemy dies and the player character does not
 			charToDefeat--
-				//decrement the count of enemies left to fight
 			$('#gameButton').empty();
-			if (charToDefeat == 0) {
-					//the game is over if enough enemies have been defeated
-				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>YOU WIN!</span></div>');
-				setTimeout(resetGame, 1000 * .75);
+			if (!charToDefeat) {
+				$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has defeated ${defendData.name}!<br><br>YOU WIN!</span></div>`);
+				advanced = true;
+				localStorage.setItem("advanced", true);
+				setTimeout(resetGame, 1e3 * .75);
 			}
 			else {
-					//there is still at least one enemy left to fight
-				$("#fightInfo").html('<div class="infoDiv"><span class="charInfo">' + attackData.name + ' has defeated ' + defendData.name + '!<br><br>Choose a new enemy to fight! (' + charToDefeat + ' remaining)</span></div>');
-				$('#charList .overlay-target').addClass("overlay");
+				$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has defeated ${defendData.name}!<br><br>Choose a new enemy to fight! (${charToDefeat} remaining)</span></div>`);
 				$("#charRemain").removeClass('invisible');
-					//reveals the remaining enemies to choose from
 			}
 		}
     });
 
     $("#gameButton").on("click", ".reset-button", function () {
-			//triggered by the button from resetGame
 		$("#charAttack").empty();
 		$("#attackHeading").empty();
 		$("#charDefend").empty();
 		$("#defendHeading").empty();
 		$('#gameButton').empty();
 		$("#fightInfo").empty();
-		$("#charRemain").empty();
-		$("#charRemain").removeClass('invisible');
-			//clears all dynamically created html from static divs
-		attackActual = 0;
-    	charToDefeat = 3;
-    	characterSelect();
-    		//resets the game with new character cards
+		$("#charRemain").empty().removeClass('invisible');
+		$("#listHome").html("<div id='charList' class='charClick'></div>");
+		$("#charSelect").append("<h4>CHARACTER SELECTION</h4>");
+		attackActual = 0, attackShield = 0, defendShield = 0, charToDefeat = 3;
+    	characterSelect(charArr, "#charList");
+    	if (advanced) {
+    		$("#advListHome").html("<div id='advCharList' class='charClick'></div>");
+    		$("#advCharSelect").append("<br><h4>ADVANCED CHARACTERS</h4>");
+    		characterSelect(advArr, "#advCharList");
+    	}
 	});
+
 });
+
+
+
+
+
+
+
+
+
+
