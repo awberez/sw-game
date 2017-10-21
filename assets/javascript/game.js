@@ -52,7 +52,8 @@ $(function(){
 	    	info: "Ace pilot of the Rebel Alliance.",
 	    	tooltip: "<b>ABILITY:</b> <i>Critical Hits</i>",
 	    	specialAttack: "crit",
-	    	specialValue: 8,
+	    	attackValue: 8,
+	    	counterValue: 12,
 	        attackPower: 0,
 	        healthPoints: 175,
 	        counterAttack: 0},
@@ -62,7 +63,8 @@ $(function(){
 	    	info: "Nobly rescued R2-D2 from the desert.",
 	    	tooltip: "<b>ABILITY:</b> <i>Random Damage</i>",
 	    	specialAttack: "rand",
-	    	specialValue: 10,
+	    	attackValue: 10,
+	    	counterValue: 20,
 	        attackPower: 0,
 	        healthPoints: 250,
 	        counterAttack: 0},
@@ -194,10 +196,10 @@ $(function(){
 
     $("#gameButton").on("click", ".fight-button", function() {
     	if (attackData.specialAttack) {
-    		attackData.attackPower = specialAttackCalc(attackData.specialAttack, attackData.attackPower, attackData.specialValue);
+    		attackData.attackPower = specialAttackCalc(attackData.specialAttack, attackData.attackPower, attackData.attackValue);
     	}
     	if (defendData.specialAttack) {
-    		defendData.counterAttack = specialAttackCalc(defendData.specialAttack, defendData.counterAttack, defendData.specialValue);
+    		defendData.counterAttack = specialAttackCalc(defendData.specialAttack, defendData.counterAttack, defendData.counterValue);
     	}
 		attackActual = attackActual + attackData.attackPower;
 		if (attackShield > 0) {
