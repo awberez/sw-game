@@ -73,7 +73,7 @@ $(function(){
 	    	tooltip: "<b>ABILITY:</b> <i>Energy Shield</i>",
 	    	specialDefend: "shield",
 	        attackPower: 20,
-	        healthPoints: 50,
+	        healthPoints: 25,
 	        shieldPoints: 50,
 	        counterAttack: 25},
 	],
@@ -154,7 +154,7 @@ $(function(){
 
 	gameStart();
 
-	$('body').on('click', '.charClick .character', function() {
+	$('body').on('click', '.charClick .character .overlay', function() {
 		if ($('#charAttack').is(':empty')) {
 			location.href = "#";
 			$(".infoDiv").remove();
@@ -162,7 +162,7 @@ $(function(){
 			$("#advCharSelect").empty();
 			$("#attackHeading").append("<h4>PLAYER</h4>");
 			$("#defendHeading").append("<h4>ENEMY</h4>");
-			$('#charAttack').append(this);
+			$('#charAttack').append($(this).parent());
 			attackData = $("#charAttack .character").data("stats");
 			if (attackData.specialDefend == "shield") {
     			attackShield = attackData.shieldPoints;
@@ -177,7 +177,7 @@ $(function(){
 		else if ($('#charDefend').is(':empty') || defendHealth <= 0) {
 			location.href = "#";
 			$("#fightInfo").empty();
-			$("#charDefend").empty().append(this);
+			$("#charDefend").empty().append($(this).parent());
 			defendData = $("#charDefend .character").data("stats");
 			if (defendData.specialDefend == "shield") {
     			defendShield = defendData.shieldPoints;
