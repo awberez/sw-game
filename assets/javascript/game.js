@@ -242,8 +242,11 @@ $(function(){
 			$('#gameButton').empty();
 			if (!charToDefeat) {
 				$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has defeated ${defendData.name}!<br><br>YOU WIN!</span></div>`);
-				advanced = true;
-				localStorage.setItem("advanced", true);
+				if (!advanced) {
+					$("#fightInfo .charInfo").append(`<br><br>Advanced Characters: UNLOCKED`);
+					advanced = true;
+					localStorage.setItem("advanced", true);
+				}
 				setTimeout(resetGame, 1e3 * .75);
 			}
 			else {
