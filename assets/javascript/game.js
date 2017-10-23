@@ -141,7 +141,6 @@ $(function(){
 	function blasterSounds() {
 		let chance = ~~(Math.random() * 11)
 		let blaster = new Audio(`assets/sounds/blaster${chance}.wav`);
-		console.log(chance);
   		blaster.play();
 	}
 
