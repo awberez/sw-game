@@ -195,6 +195,9 @@ $(function(){
     });
 
     $("#gameButton").on("click", ".fight-button", function() {
+    	var correctAudio = $('#blasterSound').get(0);
+    	correctAudio.currentTime = 0;
+  		correctAudio.play();
     	if (attackData.specialAttack) {
     		attackData.attackPower = specialAttackCalc(attackData.specialAttack, attackData.attackPower, attackData.attackValue);
     	}
