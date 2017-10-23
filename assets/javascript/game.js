@@ -96,12 +96,12 @@ $(function(){
 	}
 
 	function criticalHits(x) {
-		let chance = ~~(Math.random() * 5) + 1
+		let chance = ~~(Math.random() * 5) + 1;
 		return chance < 5 ? x : x * 3;
 	}
 
 	function randomDamage(x) {
-		return (~~(Math.random() * x) + 1)
+		return (~~(Math.random() * x) + 1);
 	}
 
 	function specialAttackCalc(special, attack, value) {
