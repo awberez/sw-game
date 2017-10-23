@@ -138,6 +138,13 @@ $(function(){
 		return health;
 	}
 
+	function blasterSounds() {
+		let chance = ~~(Math.random() * 11)
+		let blaster = new Audio(`assets/sounds/blaster${chance}.wav`);
+		console.log(chance);
+  		blaster.play();
+	}
+
 	function resetGame() {
 		let resetBtn = $("<button>");
         $(resetBtn).addClass("btn btn-lg reset-button").html("REPLAY?");
@@ -195,9 +202,7 @@ $(function(){
     });
 
     $("#gameButton").on("click", ".fight-button", function() {
-    	var correctAudio = $('#blasterSound').get(0);
-    	correctAudio.currentTime = 0;
-  		correctAudio.play();
+    	blasterSounds();
     	if (attackData.specialAttack) {
     		attackData.attackPower = specialAttackCalc(attackData.specialAttack, attackData.attackPower, attackData.attackValue);
     	}
