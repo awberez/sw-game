@@ -138,6 +138,11 @@ $(function(){
 		return health;
 	}
 
+	function selectSounds(x) {
+		let select = new Audio(`assets/sounds/select${x}.wav`);
+  		select.play();
+	}
+
 	function blasterSounds() {
 		let chance = ~~(Math.random() * 11), blaster = new Audio(`assets/sounds/blaster${chance}.wav`);
   		blaster.play();
@@ -162,7 +167,9 @@ $(function(){
 	gameStart();
 
 	$('body').on('click', '.charClick .character', function() {
+		
 		if ($('#charAttack').is(':empty')) {
+			selectSounds(1);
 			location.href = "#";
 			$(".infoDiv").remove();
 			$("#charSelect").empty();
@@ -182,6 +189,7 @@ $(function(){
 			$("#charList").append($("#advCharList"));
 		}
 		else if ($('#charDefend').is(':empty') || defendHealth <= 0) {
+			selectSounds(2);
 			location.href = "#";
 			$("#fightInfo").empty();
 			$("#charDefend").empty().append(this);
