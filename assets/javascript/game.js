@@ -80,7 +80,7 @@ $(function(){
 	        counterAttack: 25},
 	],
 
-   	attackData, attackHealth, defendData, defendHealth, attackShield = 0, defendShield = 0, attackActual = 0, charToDefeat = 3, advanced = false;
+   	attackData, attackHealth, defendData, defendHealth, attackShield, defendShield, attackActual, charToDefeat, sound = true, advanced = false;
 
 	function characterSelect(arr, where) {
 		for (let character of arr) {
@@ -142,39 +142,33 @@ $(function(){
 	}
 
 	function selectSounds(x) {
-		let select = new Audio(`assets/sounds/select${x}.wav`);
-  		select.play();
+		if (sound) { 
+			let select = new Audio(`assets/sounds/select${x}.wav`);
+	  		select.play();
+	  	}
 	}
 
 	function blasterSounds() {
-		let chance = ~~(Math.random() * 11), blaster = new Audio(`assets/sounds/blaster${chance}.wav`);
-  		blaster.play();
+		if (sound) { 
+			let chance = ~~(Math.random() * 11), blaster = new Audio(`assets/sounds/blaster${chance}.wav`);
+	  		blaster.play();
+	  	}
 	}
 
-	function resetGame() {
+	function resetGame(text) {
 		let resetBtn = $("<button>");
-        $(resetBtn).addClass("btn btn-lg reset-button").html("REPLAY?");
+        $(resetBtn).addClass("btn btn-lg reset-button").html(text);
         $("#gameButton").append(resetBtn);
 	}
-
-	function gameStart() {
-		characterSelect(charArr, "#charList");
-		advanced = localStorage.getItem("advanced");
-		if (advanced) {
-    		$("#advListHome").html("<div id='advCharList' class='charClick'></div>");
-    		$("#advCharSelect").append("<br><h4>ADVANCED CHARACTERS</h4>");
-    		characterSelect(advArr, "#advCharList");
-    	}
-	}
-
-	gameStart();
+	
+	resetGame("PLAY");
 
 	$('body').on('click', '.charClick .character', function() {
 
 		if ($('#charAttack').is(':empty')) {
 			selectSounds(1);
 			location.href = "#";
-			$(".infoDiv").remove();
+			$("#gameBody .infoDiv").remove();
 			$("#charSelect").empty();
 			$("#advCharSelect").empty();
 			$("#attackHeading").append("<h4>PLAYER</h4>");
@@ -252,7 +246,7 @@ $(function(){
 		if (attackHealth <= 0) {
 			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has been defeated by ${defendData.name}!<br><br>YOU LOSE!</span></div>`);
 			$('#gameButton').empty();
-			setTimeout(resetGame, 1e3* .75);
+			setTimeout(resetGame.bind(null, "REPLAY?"), 1e3* .75);
 		}
 		else if (defendHealth <= 0) {
 			charToDefeat--
@@ -264,7 +258,7 @@ $(function(){
 					advanced = true;
 					localStorage.setItem("advanced", true);
 				}
-				setTimeout(resetGame, 1e3 * .75);
+				setTimeout(resetGame.bind(null, "REPLAY?"), 1e3 * .75);
 			}
 			else {
 				$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">${attackData.name} has defeated ${defendData.name}!<br><br>Choose a new enemy to fight! (${charToDefeat} remaining)</span></div>`);
@@ -286,10 +280,34 @@ $(function(){
 		$("#charSelect").append("<h4>CHARACTER SELECTION</h4>");
 		attackActual = 0, attackShield = 0, defendShield = 0, charToDefeat = 3;
     	characterSelect(charArr, "#charList");
+    	advanced = localStorage.getItem("advanced");
     	if (advanced) {
     		$("#advListHome").html("<div id='advCharList' class='charClick'></div>");
     		$("#advCharSelect").append("<br><h4>ADVANCED CHARACTERS</h4>");
     		characterSelect(advArr, "#advCharList");
+    	}
+	});
+
+    $(".help-menu").on("click", function () {
+    	if ($("#gameBody").hasClass('hidden')) {
+    		$("#helpBody").addClass('hidden');
+    		$("#gameBody").removeClass('hidden');
+    	}
+    	else {
+    		$("#gameBody").addClass('hidden');
+    		$("#helpBody").removeClass('hidden');
+    	}
+	});
+
+	$("#soundChoose").on("click", function () {
+    	if (!sound) {
+    		sound = true;
+    		$("#soundOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`)
+    		selectSounds(3);
+    	}
+    	else {
+    		sound = false;
+    		$("#soundOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`)
     	}
 	});
 

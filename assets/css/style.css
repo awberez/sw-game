@@ -38,6 +38,25 @@ img {
 	filter: saturate(125%);
 }
 
+hr {
+	border-color: #FFD700;
+}
+
+.fa-question-circle-o {
+	color: #FFD700;
+	margin-left: -25px;
+}
+
+.helpOption {
+	padding: 5px;
+}
+
+.helpOption:hover {
+	border: 1px solid #FFD700;
+	border-radius: 5px;
+	transition: .1s ease;
+}
+
 .logo-image {
 	width: 250px;
 	margin-top: 20px;
@@ -276,18 +295,29 @@ img {
 	background-color: black;
 }
 
+#helpBody .infoDiv {
+	padding: 7px 25px 7px 25px !important;
+}
+
 #listHome .infoDiv, #advListHome .infoDiv {
 	left: 0;
 	top: 140px;
 }
 
-#fightInfo .infoDiv {
+#fightInfo .infoDiv, #helpInfo .infoDiv {
 	left: calc(-50vw + 50%);
 	right: calc(-50vw + 50%);
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 100%;
+}
+
+#fightInfo .infoDiv {
 	top: 85px;
+}
+
+#helpInfo .infoDiv {
+	top: 65px;
 }
 
 .charInfo {
