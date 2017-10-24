@@ -122,7 +122,10 @@ $(function(){
 		else {
 			$(`${charID} .damage-effect`).css("background", "rgba(255, 0, 0, 0.7)");
 		}
-		$(`${charID} .damage-effect`).fadeIn("fast").fadeOut("fast");
+		$(`${charID} .damage-effect`).fadeIn("fast");
+		if (shield || health > 0) {
+			$(`${charID} .damage-effect`).fadeOut("fast");
+		}
 		$(`${charID} .healthNumber`).html(health);
 		if (!shield) {
 			if (health / healthTotal <= 0) {
@@ -167,7 +170,7 @@ $(function(){
 	gameStart();
 
 	$('body').on('click', '.charClick .character', function() {
-		
+
 		if ($('#charAttack').is(':empty')) {
 			selectSounds(1);
 			location.href = "#";
@@ -271,6 +274,7 @@ $(function(){
     });
 
     $("#gameButton").on("click", ".reset-button", function () {
+    	selectSounds(0);
 		$("#charAttack").empty();
 		$("#attackHeading").empty();
 		$("#charDefend").empty();
