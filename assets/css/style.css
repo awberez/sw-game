@@ -45,6 +45,7 @@ hr {
 .fa-question-circle-o {
 	color: #FFD700;
 	margin-left: -25px;
+	transition: .3s ease;
 }
 
 .helpOption {

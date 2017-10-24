@@ -289,14 +289,8 @@ $(function(){
 	});
 
     $(".help-menu").on("click", function () {
-    	if ($("#gameBody").hasClass('hidden')) {
-    		$("#helpBody").addClass('hidden');
-    		$("#gameBody").removeClass('hidden');
-    	}
-    	else {
-    		$("#gameBody").addClass('hidden');
-    		$("#helpBody").removeClass('hidden');
-    	}
+    	$("#gameBody").toggleClass('hidden');
+    	$("#helpBody").toggleClass('hidden');
 	});
 
 	$("#soundChoose").on("click", function () {
@@ -310,5 +304,9 @@ $(function(){
     		$("#soundOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`)
     	}
 	});
+
+	$(".fa-question-circle-o").hover(
+		function(){$(this).toggleClass("fa-4x");}
+	);
 
 });
