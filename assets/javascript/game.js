@@ -155,6 +155,25 @@ $(function(){
 	  	}
 	}
 
+	function mobileGame() {
+		if (!mobile) {
+    		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
+ 			$(".overlay").toggleClass('hidden');
+ 			$("#listHome img").css("filter", "grayscale(0%)");
+ 			$("#advListHome img").css("filter", "grayscale(0%)");
+ 			$("#charRemain img").css("filter", "grayscale(0%)");
+ 			$(".advSpecial").css("opacity", "1");
+    	}
+    	else {
+    		$("#mobileOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`);
+    		$(".overlay").toggleClass('hidden');
+    		$("#listHome img").removeAttr("style");
+ 			$("#advListHome img").removeAttr("style");
+ 			$("#charRemain img").removeAttr("style");
+ 			$(".advSpecial").removeAttr("style");
+    	}
+	}
+
 	function resetGame(text) {
 		let resetBtn = $("<button>");
         $(resetBtn).addClass("btn btn-lg reset-button").html(text);
@@ -286,6 +305,7 @@ $(function(){
     		$("#advCharSelect").append("<br><h4>ADVANCED CHARACTERS</h4>");
     		characterSelect(advArr, "#advCharList");
     	}
+    	mobileGame();
 	});
 
     $(".help-menu").on("click", function () {
@@ -306,25 +326,15 @@ $(function(){
 	});
 
 	$("#mobileChoose").on("click", function () {
-    	if (!mobile) {
-    		selectSounds(3);
-    		mobile = true;
-    		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
- 			$(".overlay").toggleClass('hidden');
- 			$("#listHome img").css("filter", "grayscale(0%)");
- 			$("#advListHome img").css("filter", "grayscale(0%)");
- 			$("#charRemain img").css("filter", "grayscale(0%)");
- 			$(".advSpecial").css("opacity", "1");
+    	mobileGame();
+    	if (mobile) {
+    		mobile = false;
     	}
     	else {
-    		mobile = false;
-    		$("#mobileOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`);
-    		$(".overlay").toggleClass('hidden');
-    		$("#listHome img").removeAttr("style");
- 			$("#advListHome img").removeAttr("style");
- 			$("#charRemain img").removeAttr("style");
- 			$(".advSpecial").removeAttr("style");
+    		selectSounds(3);
+    		mobile = true;
     	}
+
 	});
 
 	$(".fa-question-circle-o").hover(
