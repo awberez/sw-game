@@ -327,7 +327,6 @@ $(function(){
 	});
 
 	$("#mobileChoose").on("click", function () {
-    	mobileGame();
     	if (mobile) {
     		selectSounds(3);
     		mobile = false;
@@ -335,7 +334,7 @@ $(function(){
     	else {
     		mobile = true;
     	}
-
+		mobileGame();
 	});
 
 	$(".fa-question-circle-o").hover(
