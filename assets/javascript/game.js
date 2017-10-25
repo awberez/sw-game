@@ -328,7 +328,6 @@ $(function(){
 
 	$("#mobileChoose").on("click", function () {
     	if (mobile) {
-    		selectSounds(3);
     		mobile = false;
     	}
     	else {
