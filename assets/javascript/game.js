@@ -203,6 +203,7 @@ $(function(){
 			$("#fightInfo").html(`<div class="infoDiv"><span class="charInfo">Can ${attackData.name} defeat 3 enemies?<br><br>Choose an enemy to fight!</span></div>`);
 			$("#charRemain").append("<h4>ENEMIES AVAILABLE TO FIGHT</h4>").append($("#charList"));
 			$("#charList").append($("#advCharList"));
+			mobileGame();
 		}
 		else if ($('#charDefend').is(':empty') || defendHealth <= 0) {
 			selectSounds(2);
