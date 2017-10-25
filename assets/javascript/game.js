@@ -177,7 +177,9 @@ $(function(){
 	function resetGame(text) {
 		if (isMobile.any) {
     		mobile = true;
+    		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
     	}
+
 		let resetBtn = $("<button>");
         $(resetBtn).addClass("btn btn-lg reset-button").html(text);
         $("#gameButton").append(resetBtn);
