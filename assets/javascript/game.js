@@ -156,7 +156,7 @@ $(function(){
 	}
 
 	function mobileGame() {
-		if (!mobile) {
+		if (mobile) {
     		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
  			$(".overlay").toggleClass('hidden');
  			$("#listHome img").css("filter", "grayscale(0%)");
@@ -329,10 +329,10 @@ $(function(){
 	$("#mobileChoose").on("click", function () {
     	mobileGame();
     	if (mobile) {
+    		selectSounds(3);
     		mobile = false;
     	}
     	else {
-    		selectSounds(3);
     		mobile = true;
     	}
 
