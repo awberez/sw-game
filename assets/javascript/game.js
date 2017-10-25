@@ -175,6 +175,9 @@ $(function(){
 	}
 
 	function resetGame(text) {
+		if (isMobile.any) {
+    		mobile = true;
+    	}
 		let resetBtn = $("<button>");
         $(resetBtn).addClass("btn btn-lg reset-button").html(text);
         $("#gameButton").append(resetBtn);
@@ -288,9 +291,6 @@ $(function(){
     });
 
     $("#gameButton").on("click", ".reset-button", function () {
-    	if (isMobile.any) {
-    		mobile = true;
-    	}
     	selectSounds(0);
 		$("#charAttack").empty();
 		$("#attackHeading").empty();
