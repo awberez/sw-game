@@ -288,6 +288,9 @@ $(function(){
     });
 
     $("#gameButton").on("click", ".reset-button", function () {
+    	if (isMobile.any) {
+    		mobile = true;
+    	}
     	selectSounds(0);
 		$("#charAttack").empty();
 		$("#attackHeading").empty();
