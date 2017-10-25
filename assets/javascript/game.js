@@ -80,7 +80,7 @@ $(function(){
 	        counterAttack: 25},
 	],
 
-   	attackData, attackHealth, defendData, defendHealth, attackShield, defendShield, attackActual, charToDefeat, sound = true, advanced = false;
+   	attackData, attackHealth, defendData, defendHealth, attackShield, defendShield, attackActual, charToDefeat, sound = true, mobile = false, advanced = false;
 
 	function characterSelect(arr, where) {
 		for (let character of arr) {
@@ -296,12 +296,34 @@ $(function(){
 	$("#soundChoose").on("click", function () {
     	if (!sound) {
     		sound = true;
-    		$("#soundOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`)
+    		$("#soundOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
     		selectSounds(3);
     	}
     	else {
     		sound = false;
-    		$("#soundOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`)
+    		$("#soundOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`);
+    	}
+	});
+
+	$("#mobileChoose").on("click", function () {
+    	if (!mobile) {
+    		selectSounds(3);
+    		mobile = true;
+    		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
+ 			$(".overlay").toggleClass('hidden');
+ 			$("#listHome img").css("filter", "grayscale(0%)");
+ 			$("#advListHome img").css("filter", "grayscale(0%)");
+ 			$("#charRemain img").css("filter", "grayscale(0%)");
+ 			$(".advSpecial").css("opacity", "1");
+    	}
+    	else {
+    		mobile = false;
+    		$("#mobileOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`);
+    		$(".overlay").toggleClass('hidden');
+    		$("#listHome img").removeAttr("style");
+ 			$("#advListHome img").removeAttr("style");
+ 			$("#charRemain img").removeAttr("style");
+ 			$(".advSpecial").removeAttr("style");
     	}
 	});
 
