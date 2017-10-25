@@ -490,6 +490,10 @@ fieldset[disabled] .reset-button.active {
 }
 
 @media screen and (max-width: 335px) {
+	
+	body {
+		background-position: top 0px right -250px;
+	}
 
 	#charAttack .character {
 		left: calc(-5%);
