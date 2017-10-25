@@ -6,10 +6,16 @@ html {
 }
 
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../images/NewHope.jpg);
+    background-image: url(../images/NewHope.jpg);
 	background-size: auto 1200px;
 	background-position: top 0px right 0px;
 	background-repeat: no-repeat;
+}
+
+.fadeBackground {
+	position: relative;
+	background-color:rgba(0, 0, 0, 0.7);
+	min-height: 100vh;
 }
 
 h3 {
