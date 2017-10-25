@@ -158,7 +158,7 @@ $(function(){
 	function mobileGame() {
 		if (mobile) {
     		$("#mobileOn").html(`<i class="fa fa-check-square-o" aria-hidden="true"></i>`);
- 			$(".overlay").toggleClass('hidden');
+ 			$(".overlay").addClass('hidden');
  			$("#listHome img").css("filter", "grayscale(0%)");
  			$("#advListHome img").css("filter", "grayscale(0%)");
  			$("#charRemain img").css("filter", "grayscale(0%)");
@@ -166,7 +166,7 @@ $(function(){
     	}
     	else {
     		$("#mobileOn").html(`<i class="fa fa-square-o" aria-hidden="true"></i>`);
-    		$(".overlay").toggleClass('hidden');
+    		$(".overlay").removeClass('hidden');
     		$("#listHome img").removeAttr("style");
  			$("#advListHome img").removeAttr("style");
  			$("#charRemain img").removeAttr("style");
