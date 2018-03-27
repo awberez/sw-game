@@ -8,6 +8,10 @@ Next, select an enemy to battle from the remaining characters:
 
 ![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_3.png "Enemies Image")
 
+Click the fight button to attack the chosen enemy:
+
+![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_6.png "Advanced Characters Image")
+
 Every time you fight with the chosen enemy, each character's health is reduced by the other's attack. The enemy's attack strength remains the same every time you fight, but yours increases to represent the experience gained from combat. Choose the order of your enemies wisely, because you need to win three successive battles to beat the game! If your character can emerge victorious, you'll unlock three additional characters for future playthroughs:
 
 ![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_4.png "Advanced Characters Image")
