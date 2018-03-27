@@ -21,4 +21,4 @@ These characters have unique abilities, but you'll have to unlock them to find o
 # Help
 ![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_5.png "Help Image") 
 
-Click the icon in the upper right corner to bring up a menu with the game rules and optional settings. The mobile-friendly option should automatically account for mobile devices to avoid touchscreen issues with the styling overlays, but may need to be enabled manually for large devices such as some iPad models.
+Click the icon in the upper right corner to bring up a menu with the game rules and optional settings. The mobile-friendly option should automatically detect mobile devices, but may need to be enabled manually for larger touchscreen devices such as some iPad models.
