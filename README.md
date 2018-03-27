@@ -4,7 +4,7 @@ Take on the galaxy as your favorite minor character from the original trilogy! T
 
 ![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_2.png "Characters Image")
 
-Next, select an enemey to battle from the remaining characters:
+Next, select an enemy to battle from the remaining characters:
 
 ![alt text](https://github.com/awberez/sw-game/blob/master/assets/images/readme_3.png "Enemies Image")
 
